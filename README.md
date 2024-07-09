@@ -7,7 +7,7 @@
 
 
 # :wrench: Alati koji su korišćeni:
- Clang
+* Clang
   - Clang-Tidy
   - Clazy
 * Cppcheck
@@ -21,4 +21,4 @@
 
 
 # Autor:
-Katarina Milosevic, 1019/2023
+Katarina Milošević, 1019/2023
