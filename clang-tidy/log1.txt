@@ -1,0 +1,785 @@
+Enabled checks:
+    clang-analyzer-apiModeling.Errno
+    clang-analyzer-apiModeling.StdCLibraryFunctions
+    clang-analyzer-apiModeling.TrustNonnull
+    clang-analyzer-apiModeling.TrustReturnsNonnull
+    clang-analyzer-apiModeling.google.GTest
+    clang-analyzer-apiModeling.llvm.CastValue
+    clang-analyzer-apiModeling.llvm.ReturnValue
+    clang-analyzer-core.CallAndMessage
+    clang-analyzer-core.CallAndMessageModeling
+    clang-analyzer-core.DivideZero
+    clang-analyzer-core.DynamicTypePropagation
+    clang-analyzer-core.NonNullParamChecker
+    clang-analyzer-core.NonnilStringConstants
+    clang-analyzer-core.NullDereference
+    clang-analyzer-core.StackAddrEscapeBase
+    clang-analyzer-core.StackAddressEscape
+    clang-analyzer-core.UndefinedBinaryOperatorResult
+    clang-analyzer-core.VLASize
+    clang-analyzer-core.builtin.BuiltinFunctions
+    clang-analyzer-core.builtin.NoReturnFunctions
+    clang-analyzer-core.uninitialized.ArraySubscript
+    clang-analyzer-core.uninitialized.Assign
+    clang-analyzer-core.uninitialized.Branch
+    clang-analyzer-core.uninitialized.CapturedBlockVariable
+    clang-analyzer-core.uninitialized.NewArraySize
+    clang-analyzer-core.uninitialized.UndefReturn
+    clang-analyzer-cplusplus.InnerPointer
+    clang-analyzer-cplusplus.Move
+    clang-analyzer-cplusplus.NewDelete
+    clang-analyzer-cplusplus.NewDeleteLeaks
+    clang-analyzer-cplusplus.PlacementNew
+    clang-analyzer-cplusplus.PureVirtualCall
+    clang-analyzer-cplusplus.SelfAssignment
+    clang-analyzer-cplusplus.SmartPtrModeling
+    clang-analyzer-cplusplus.StringChecker
+    clang-analyzer-cplusplus.VirtualCallModeling
+    clang-analyzer-deadcode.DeadStores
+    clang-analyzer-fuchsia.HandleChecker
+    clang-analyzer-nullability.NullPassedToNonnull
+    clang-analyzer-nullability.NullReturnedFromNonnull
+    clang-analyzer-nullability.NullabilityBase
+    clang-analyzer-nullability.NullableDereferenced
+    clang-analyzer-nullability.NullablePassedToNonnull
+    clang-analyzer-nullability.NullableReturnedFromNonnull
+    clang-analyzer-optin.cplusplus.UninitializedObject
+    clang-analyzer-optin.cplusplus.VirtualCall
+    clang-analyzer-optin.mpi.MPI-Checker
+    clang-analyzer-optin.osx.OSObjectCStyleCast
+    clang-analyzer-optin.osx.cocoa.localizability.EmptyLocalizationContextChecker
+    clang-analyzer-optin.osx.cocoa.localizability.NonLocalizedStringChecker
+    clang-analyzer-optin.performance.GCDAntipattern
+    clang-analyzer-optin.performance.Padding
+    clang-analyzer-optin.portability.UnixAPI
+    clang-analyzer-osx.API
+    clang-analyzer-osx.MIG
+    clang-analyzer-osx.NSOrCFErrorDerefChecker
+    clang-analyzer-osx.NumberObjectConversion
+    clang-analyzer-osx.OSObjectRetainCount
+    clang-analyzer-osx.ObjCProperty
+    clang-analyzer-osx.SecKeychainAPI
+    clang-analyzer-osx.cocoa.AtSync
+    clang-analyzer-osx.cocoa.AutoreleaseWrite
+    clang-analyzer-osx.cocoa.ClassRelease
+    clang-analyzer-osx.cocoa.Dealloc
+    clang-analyzer-osx.cocoa.IncompatibleMethodTypes
+    clang-analyzer-osx.cocoa.Loops
+    clang-analyzer-osx.cocoa.MissingSuperCall
+    clang-analyzer-osx.cocoa.NSAutoreleasePool
+    clang-analyzer-osx.cocoa.NSError
+    clang-analyzer-osx.cocoa.NilArg
+    clang-analyzer-osx.cocoa.NonNilReturnValue
+    clang-analyzer-osx.cocoa.ObjCGenerics
+    clang-analyzer-osx.cocoa.RetainCount
+    clang-analyzer-osx.cocoa.RetainCountBase
+    clang-analyzer-osx.cocoa.RunLoopAutoreleaseLeak
+    clang-analyzer-osx.cocoa.SelfInit
+    clang-analyzer-osx.cocoa.SuperDealloc
+    clang-analyzer-osx.cocoa.UnusedIvars
+    clang-analyzer-osx.cocoa.VariadicMethodTypes
+    clang-analyzer-osx.coreFoundation.CFError
+    clang-analyzer-osx.coreFoundation.CFNumber
+    clang-analyzer-osx.coreFoundation.CFRetainRelease
+    clang-analyzer-osx.coreFoundation.containers.OutOfBounds
+    clang-analyzer-osx.coreFoundation.containers.PointerSizedValues
+    clang-analyzer-security.FloatLoopCounter
+    clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling
+    clang-analyzer-security.insecureAPI.SecuritySyntaxChecker
+    clang-analyzer-security.insecureAPI.UncheckedReturn
+    clang-analyzer-security.insecureAPI.bcmp
+    clang-analyzer-security.insecureAPI.bcopy
+    clang-analyzer-security.insecureAPI.bzero
+    clang-analyzer-security.insecureAPI.decodeValueOfObjCType
+    clang-analyzer-security.insecureAPI.getpw
+    clang-analyzer-security.insecureAPI.gets
+    clang-analyzer-security.insecureAPI.mkstemp
+    clang-analyzer-security.insecureAPI.mktemp
+    clang-analyzer-security.insecureAPI.rand
+    clang-analyzer-security.insecureAPI.strcpy
+    clang-analyzer-security.insecureAPI.vfork
+    clang-analyzer-unix.API
+    clang-analyzer-unix.DynamicMemoryModeling
+    clang-analyzer-unix.Malloc
+    clang-analyzer-unix.MallocSizeof
+    clang-analyzer-unix.MismatchedDeallocator
+    clang-analyzer-unix.Vfork
+    clang-analyzer-unix.cstring.BadSizeArg
+    clang-analyzer-unix.cstring.CStringModeling
+    clang-analyzer-unix.cstring.NullArg
+    clang-analyzer-valist.CopyToSelf
+    clang-analyzer-valist.Uninitialized
+    clang-analyzer-valist.Unterminated
+    clang-analyzer-valist.ValistBase
+    clang-analyzer-webkit.NoUncountedMemberChecker
+    clang-analyzer-webkit.RefCntblBaseVirtualDtor
+    clang-analyzer-webkit.UncountedLambdaCapturesChecker
+    readability-avoid-const-params-in-decls
+    readability-braces-around-statements
+    readability-const-return-type
+    readability-container-contains
+    readability-container-data-pointer
+    readability-container-size-empty
+    readability-convert-member-functions-to-static
+    readability-delete-null-pointer
+    readability-duplicate-include
+    readability-else-after-return
+    readability-function-cognitive-complexity
+    readability-function-size
+    readability-identifier-length
+    readability-identifier-naming
+    readability-implicit-bool-conversion
+    readability-inconsistent-declaration-parameter-name
+    readability-isolate-declaration
+    readability-magic-numbers
+    readability-make-member-function-const
+    readability-misleading-indentation
+    readability-misplaced-array-index
+    readability-named-parameter
+    readability-non-const-parameter
+    readability-qualified-auto
+    readability-redundant-access-specifiers
+    readability-redundant-control-flow
+    readability-redundant-declaration
+    readability-redundant-function-ptr-dereference
+    readability-redundant-member-init
+    readability-redundant-preprocessor
+    readability-redundant-smartptr-get
+    readability-redundant-string-cstr
+    readability-redundant-string-init
+    readability-simplify-boolean-expr
+    readability-simplify-subscript-expr
+    readability-static-accessed-through-instance
+    readability-static-definition-in-anonymous-namespace
+    readability-string-compare
+    readability-suspicious-call-argument
+    readability-uniqueptr-delete-release
+    readability-uppercase-literal-suffix
+    readability-use-anyofallof
+
+clang-tidy-16 -checks=readability-* -p=/home/katarina/Desktop/vs/10-stratego/Stratego/build /home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/../Headers/game.h:72:10: warning: function 'Game::copyState' has a definition with different parameter names [readability-inconsistent-declaration-parameter-name]
+    void copyState(State &st, State &state);
+         ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:256:12: note: the definition seen here
+void Game::copyState(State &newState, State &state)
+           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/../Headers/game.h:72:10: note: differing parameters are named here: ('st'), in definition: ('newState')
+    void copyState(State &st, State &state);
+         ^                ~~
+                          newState
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:3:26: warning: parameter name 'a' is too short, expected at least 3 characters [readability-identifier-length]
+auto getRandomNumber(int a, int b) -> int;
+                         ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:3:33: warning: parameter name 'b' is too short, expected at least 3 characters [readability-identifier-length]
+auto getRandomNumber(int a, int b) -> int;
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:8:24: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i = 0; i < 10; i++){
+                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:9:28: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(int j = 0; j < 10; j++){
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:10:23: warning: variable name 'f' is too short, expected at least 3 characters [readability-identifier-length]
+            Figurine *f = state[i][j].getFigurine();
+                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:11:16: warning: implicit conversion 'Figurine *' -> bool [readability-implicit-bool-conversion]
+            if(f && f->getOwner() == PlayerType::Human && f->getFigurineType() != FigurineType::Flag){
+               ^
+               ( != nullptr)
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:12:38: warning: 100 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                if(getRandomNumber(1,100) > difficulty){
+                                     ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:13:50: warning: 11 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                    int rnd = getRandomNumber(1, 11);
+                                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:62:11: warning: variable name 'st' is too short, expected at least 3 characters [readability-identifier-length]
+    State st;
+          ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:84:38: warning: 100 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        int rnd = getRandomNumber(1, 100);
+                                     ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:85:58: warning: redundant boolean literal in ternary expression result [readability-simplify-boolean-expr]
+        bool shouldRandomize = (rnd > getDifficulty()) ? true : false;
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+                               rnd > getDifficulty()
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:101:71: warning: 90 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        m_gameScene->moveFigurine(oldI, oldJ, newI, newJ, getBoard(), 90);
+                                                                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:125:24: warning: statement should be inside braces [readability-braces-around-statements]
+    if(shouldRandomize)
+                       ^
+                        {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:130:48: warning: 3000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    if(depth == 4 || current_evaluation >= abs(3000)){
+                                               ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:141:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int maxOldI = -1, maxOldJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:142:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int maxNewI = -1, maxNewJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:144:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int OldI = -1, OldJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:145:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int NewI = -1, NewJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:172:35: warning: statement should be inside braces [readability-braces-around-statements]
+        if(max_evaluation > alpha)
+                                  ^
+                                   {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:188:48: warning: 3000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    if(depth == 4 || current_evaluation >= abs(3000)){
+                                               ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:198:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int minOldI = -1, minOldJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:199:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int minNewI = -1, minNewJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:201:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int OldI = -1, OldJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:202:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int NewI = -1, NewJ = -1;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:229:34: warning: statement should be inside braces [readability-braces-around-statements]
+        if(min_evaluation < beta)
+                                 ^
+                                  {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:240:43: warning: parameter name 'i' is too short, expected at least 3 characters [readability-identifier-length]
+auto moveFigurine(int oldI, int oldJ, int i, int j, Figurine* figurine, State& state) -> State &{
+                                          ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:240:50: warning: parameter name 'j' is too short, expected at least 3 characters [readability-identifier-length]
+auto moveFigurine(int oldI, int oldJ, int i, int j, Figurine* figurine, State& state) -> State &{
+                                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:250:25: warning: parameter name 'i' is too short, expected at least 3 characters [readability-identifier-length]
+auto deleteFigurine(int i, int j, State& state) -> State &{
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:250:32: warning: parameter name 'j' is too short, expected at least 3 characters [readability-identifier-length]
+auto deleteFigurine(int i, int j, State& state) -> State &{
+                               ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:256:12: warning: method 'copyState' can be made static [readability-convert-member-functions-to-static]
+void Game::copyState(State &newState, State &state)
+           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:258:21: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    newState.resize(10);
+                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:259:20: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i=0; i<10; i++)
+                   ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:259:28: warning: statement should be inside braces [readability-braces-around-statements]
+    for(int i=0; i<10; i++)
+                           ^
+                            {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:260:28: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        newState[i].resize(10,Field(FieldType::Free));
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:262:20: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i=0; i<10; i++){
+                   ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:263:24: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(int j=0; j<10; j++){
+                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:268:16: warning: redundant boolean literal in if statement condition [readability-simplify-boolean-expr]
+            if(true){
+            ~~~^~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:278:56: warning: parameter name 'st' is too short, expected at least 3 characters [readability-identifier-length]
+void Game::resetStateParams(stateParams &stateP, State st)
+                                                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:287:47: warning: parameter name 'sp' is too short, expected at least 3 characters [readability-identifier-length]
+void Game::initializeStateParams(stateParams& sp, State st, int oldI, int oldJ, int newI, int newJ)
+                                              ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:287:57: warning: parameter name 'st' is too short, expected at least 3 characters [readability-identifier-length]
+void Game::initializeStateParams(stateParams& sp, State st, int oldI, int oldJ, int newI, int newJ)
+                                                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:296:12: warning: function 'getNextStates' has cognitive complexity of 472 (threshold 25) [readability-function-cognitive-complexity]
+auto Game::getNextStates(State& st, Turn turn) -> std::vector<stateParams>
+           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:303:5: note: +1, including nesting penalty of 0, nesting level increased to 1
+    if(turn == Turn::Computer)
+    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:305:5: note: +1, nesting level increased to 1
+    else
+    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:319:5: note: +1, including nesting penalty of 0, nesting level increased to 1
+    for(i = 0; i<10; i++){
+    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:320:9: note: +2, including nesting penalty of 1, nesting level increased to 2
+        for(j = 0; j<10; j++){
+        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:322:13: note: +3, including nesting penalty of 2, nesting level increased to 3
+            if(st[i][j].getFigurine() != nullptr){
+            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:330:17: note: +4, including nesting penalty of 3, nesting level increased to 4
+                if(figurine->getOwner() != pt)
+                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:333:17: note: +4, including nesting penalty of 3, nesting level increased to 4
+                if(figurine != nullptr){
+                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:335:21: note: +5, including nesting penalty of 4, nesting level increased to 5
+                    if(figurine->getFigurineType() == FigurineType::Scout){
+                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:338:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        while(i+k < 10 && (st[i+k][j].getFigurine() == nullptr) && !st[i+k][j].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:338:81: note: +1
+                        while(i+k < 10 && (st[i+k][j].getFigurine() == nullptr) && !st[i+k][j].isForbidden() ){
+                                                                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:340:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i+k || fig.getOldJ() != j)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:340:53: note: +1
+                            if(fig.getOldI() != i+k || fig.getOldJ() != j)
+                                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:352:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(i+k < 10 && (st[i+k][j].getFigurine() != nullptr)){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:352:37: note: +1
+                        if(i+k < 10 && (st[i+k][j].getFigurine() != nullptr)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:356:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:358:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i+k || fig.getOldJ() != j)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:358:57: note: +1
+                                if(fig.getOldI() != i+k || fig.getOldJ() != j)
+                                                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:361:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:369:42: note: +1, nesting level increased to 9
+                                    else if((*figurine) == (*enemy)){
+                                         ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:377:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:389:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        while(i-k >= 0 && (st[i-k][j].getFigurine() == nullptr) && !st[i-k][j].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:389:81: note: +1
+                        while(i-k >= 0 && (st[i-k][j].getFigurine() == nullptr) && !st[i-k][j].isForbidden() ){
+                                                                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:390:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i-k || fig.getOldJ() != j)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:390:53: note: +1
+                            if(fig.getOldI() != i-k || fig.getOldJ() != j)
+                                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:403:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(i-k >= 0 && (st[i-k][j].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:403:37: note: +1
+                        if(i-k >= 0 && (st[i-k][j].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:407:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:409:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i-k || fig.getOldJ() != j)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:409:57: note: +1
+                                if(fig.getOldI() != i-k || fig.getOldJ() != j)
+                                                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:412:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:420:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:428:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:441:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        while(j+k < 10 && (st[i][j+k].getFigurine() == nullptr) && !st[i][j+k].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:441:81: note: +1
+                        while(j+k < 10 && (st[i][j+k].getFigurine() == nullptr) && !st[i][j+k].isForbidden() ){
+                                                                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:442:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i || fig.getOldJ() != j+k)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:442:51: note: +1
+                            if(fig.getOldI() != i || fig.getOldJ() != j+k)
+                                                  ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:455:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(j+k < 10 && (st[i][j+k].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:455:37: note: +1
+                        if(j+k < 10 && (st[i][j+k].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:459:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:461:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i || fig.getOldJ() != j+k)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:461:55: note: +1
+                                if(fig.getOldI() != i || fig.getOldJ() != j+k)
+                                                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:464:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:472:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:480:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:493:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        while(j-k >= 0 && (st[i][j-k].getFigurine() == nullptr) && !st[i][j-k].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:493:81: note: +1
+                        while(j-k >= 0 && (st[i][j-k].getFigurine() == nullptr) && !st[i][j-k].isForbidden() ){
+                                                                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:495:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i || fig.getOldJ() != j-k)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:495:51: note: +1
+                            if(fig.getOldI() != i || fig.getOldJ() != j-k)
+                                                  ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:507:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(j-k >= 0 && (st[i][j-k].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:507:37: note: +1
+                        if(j-k >= 0 && (st[i][j-k].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:511:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:513:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i || fig.getOldJ() != j-k)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:513:55: note: +1
+                                if(fig.getOldI() != i || fig.getOldJ() != j-k)
+                                                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:516:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:524:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:532:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:544:26: note: +1, nesting level increased to 5
+                    else if(figurine->getFigurineType() != FigurineType::Bomb && figurine->getFigurineType() != FigurineType::Flag){
+                         ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:544:79: note: +1
+                    else if(figurine->getFigurineType() != FigurineType::Bomb && figurine->getFigurineType() != FigurineType::Flag){
+                                                                              ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:545:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(i+1 < 10 && (st[i+1][j].getFigurine() == nullptr) && !st[i+1][j].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:545:78: note: +1
+                        if(i+1 < 10 && (st[i+1][j].getFigurine() == nullptr) && !st[i+1][j].isForbidden() ){
+                                                                             ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:546:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i+1 || fig.getOldJ() != j)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:546:53: note: +1
+                            if(fig.getOldI() != i+1 || fig.getOldJ() != j)
+                                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:557:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(i+1 < 10 && (st[i+1][j].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:557:37: note: +1
+                        if(i+1 < 10 && (st[i+1][j].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:561:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:563:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i+1 || fig.getOldJ() != j)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:563:57: note: +1
+                                if(fig.getOldI() != i+1 || fig.getOldJ() != j)
+                                                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:566:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:574:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:582:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:593:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(i-1 >= 0 && (st[i-1][j].getFigurine() == nullptr) && !st[i-1][j].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:593:78: note: +1
+                        if(i-1 >= 0 && (st[i-1][j].getFigurine() == nullptr) && !st[i-1][j].isForbidden() ){
+                                                                             ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:594:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i-1 || fig.getOldJ() != j)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:594:53: note: +1
+                            if(fig.getOldI() != i-1 || fig.getOldJ() != j)
+                                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:607:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(i-1 >= 0 && (st[i-1][j].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:607:37: note: +1
+                        if(i-1 >= 0 && (st[i-1][j].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:611:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:613:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i-1 || fig.getOldJ() != j)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:613:57: note: +1
+                                if(fig.getOldI() != i-1 || fig.getOldJ() != j)
+                                                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:616:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:624:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:632:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:643:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(j+1 < 10 && (st[i][j+1].getFigurine() == nullptr) && !st[i][j+1].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:643:78: note: +1
+                        if(j+1 < 10 && (st[i][j+1].getFigurine() == nullptr) && !st[i][j+1].isForbidden() ){
+                                                                             ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:644:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i || fig.getOldJ() != j+1)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:644:51: note: +1
+                            if(fig.getOldI() != i || fig.getOldJ() != j+1)
+                                                  ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:656:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(j+1 < 10 && (st[i][j+1].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:656:37: note: +1
+                        if(j+1 < 10 && (st[i][j+1].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:659:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:661:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i || fig.getOldJ() != j+1)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:661:55: note: +1
+                                if(fig.getOldI() != i || fig.getOldJ() != j+1)
+                                                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:664:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:672:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:680:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:691:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(j-1 >= 0 && (st[i][j-1].getFigurine() == nullptr) && !st[i][j-1].isForbidden() ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:691:78: note: +1
+                        if(j-1 >= 0 && (st[i][j-1].getFigurine() == nullptr) && !st[i][j-1].isForbidden() ){
+                                                                             ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:692:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(fig.getOldI() != i || fig.getOldJ() != j-1)
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:692:51: note: +1
+                            if(fig.getOldI() != i || fig.getOldJ() != j-1)
+                                                  ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:703:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+                        if(j-1 >= 0 && (st[i][j-1].getFigurine() != nullptr) ){
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:703:37: note: +1
+                        if(j-1 >= 0 && (st[i][j-1].getFigurine() != nullptr) ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:707:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+                            if(enemy->getOwner() != figurine->getOwner()){
+                            ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:709:33: note: +8, including nesting penalty of 7, nesting level increased to 8
+                                if(fig.getOldI() != i || fig.getOldJ() != j-1)
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:709:55: note: +1
+                                if(fig.getOldI() != i || fig.getOldJ() != j-1)
+                                                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:712:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) > (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:720:37: note: +9, including nesting penalty of 8, nesting level increased to 9
+                                    if((*figurine) == (*enemy)){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:728:37: note: +1, nesting level increased to 9
+                                    else {
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:739:21: note: +1, nesting level increased to 5
+                    else
+                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:296:33: warning: parameter name 'st' is too short, expected at least 3 characters [readability-identifier-length]
+auto Game::getNextStates(State& st, Turn turn) -> std::vector<stateParams>
+                                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:298:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int i,j;
+    ^~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:298:9: warning: variable name 'i' is too short, expected at least 3 characters [readability-identifier-length]
+    int i,j;
+        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:298:11: warning: variable name 'j' is too short, expected at least 3 characters [readability-identifier-length]
+    int i,j;
+          ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:301:16: warning: variable name 'pt' is too short, expected at least 3 characters [readability-identifier-length]
+    PlayerType pt;
+               ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:303:31: warning: statement should be inside braces [readability-braces-around-statements]
+    if(turn == Turn::Computer)
+                              ^
+                               {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:305:9: warning: statement should be inside braces [readability-braces-around-statements]
+    else
+        ^
+         {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:308:17: warning: variable name 'sp' is too short, expected at least 3 characters [readability-identifier-length]
+    stateParams sp;
+                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:318:9: warning: variable name 'k' is too short, expected at least 3 characters [readability-identifier-length]
+    int k = 1;
+        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:319:18: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(i = 0; i<10; i++){
+                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:320:22: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(j = 0; j<10; j++){
+                     ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:330:47: warning: statement should be inside braces [readability-braces-around-statements]
+                if(figurine->getOwner() != pt)
+                                              ^
+                                               {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:338:37: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        while(i+k < 10 && (st[i+k][j].getFigurine() == nullptr) && !st[i+k][j].isForbidden() ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:352:34: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        if(i+k < 10 && (st[i+k][j].getFigurine() != nullptr)){
+                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:441:37: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        while(j+k < 10 && (st[i][j+k].getFigurine() == nullptr) && !st[i][j+k].isForbidden() ){
+                                    ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:455:34: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        if(j+k < 10 && (st[i][j+k].getFigurine() != nullptr) ){
+                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:545:34: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        if(i+1 < 10 && (st[i+1][j].getFigurine() == nullptr) && !st[i+1][j].isForbidden() ){
+                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:557:34: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        if(i+1 < 10 && (st[i+1][j].getFigurine() != nullptr) ){
+                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:643:34: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        if(j+1 < 10 && (st[i][j+1].getFigurine() == nullptr) && !st[i][j+1].isForbidden() ){
+                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:656:34: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                        if(j+1 < 10 && (st[i][j+1].getFigurine() != nullptr) ){
+                                 ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:739:25: warning: statement should be inside braces [readability-braces-around-statements]
+                    else
+                        ^
+                         {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:750:12: warning: method 'evaluateBoard' can be made const [readability-make-member-function-const]
+auto Game::evaluateBoard(State playingBoard) -> int
+           ^
+                                             const
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:753:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int playersEvaluation, computersEvaluation;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:754:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    bool playerHasFlag, computerHasFlag;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:756:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int playerI = {}, playerJ = {};
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:757:5: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+    int distCurr, sumDist = 0;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:759:24: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i = 0; i < 10; i++){
+                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:760:28: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(int j = 0; j < 10; j++){
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:761:23: warning: variable name 'f' is too short, expected at least 3 characters [readability-identifier-length]
+            Figurine *f = playingBoard[i][j].getFigurine();
+                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:762:16: warning: implicit conversion 'Figurine *' -> bool [readability-implicit-bool-conversion]
+            if(f){
+               ^
+                 != nullptr
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:771:24: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i = 0; i < 10; i++){
+                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:772:28: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(int j = 0; j < 10; j++){
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:773:23: warning: variable name 'f' is too short, expected at least 3 characters [readability-identifier-length]
+            Figurine *f = playingBoard[i][j].getFigurine();
+                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:774:16: warning: implicit conversion 'Figurine *' -> bool [readability-implicit-bool-conversion]
+            if(f){
+               ^
+                 != nullptr
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:798:16: warning: 10000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        return 10000 - currdepth;
+               ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:801:17: warning: 10000 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        return -10000 + currdepth;
+                ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:809:24: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i = 0; i < 10; i++){
+                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:810:28: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(int j = 0; j < 10; j++){
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:814:30: warning: statement should be inside braces [readability-braces-around-statements]
+                if(firstTime)
+                             ^
+                              {
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:816:30: warning: 90 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+                int sqSize = 90;
+                             ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:856:25: warning: parameter name 'i' is too short, expected at least 3 characters [readability-identifier-length]
+auto Game::getBoard(int i, int j) -> Field*
+                        ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:856:32: warning: parameter name 'j' is too short, expected at least 3 characters [readability-identifier-length]
+auto Game::getBoard(int i, int j) -> Field*
+                               ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:866:28: warning: parameter name 'f' is too short, expected at least 3 characters [readability-identifier-length]
+void Game::setBoard(Field* f, int i, int j)
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:866:35: warning: parameter name 'i' is too short, expected at least 3 characters [readability-identifier-length]
+void Game::setBoard(Field* f, int i, int j)
+                                  ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:866:42: warning: parameter name 'j' is too short, expected at least 3 characters [readability-identifier-length]
+void Game::setBoard(Field* f, int i, int j)
+                                         ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:907:12: warning: method 'checkNoMoreMoves' can be made static [readability-convert-member-functions-to-static]
+auto Game::checkNoMoreMoves(PlayerType playerType, Board *board) -> bool
+           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:909:24: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    for(int i = 0; i < 10; i++){
+                       ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:910:28: warning: 10 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+        for(int j = 0; j < 10; j++){
+                           ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:911:23: warning: variable name 'f' is too short, expected at least 3 characters [readability-identifier-length]
+            Figurine *f = (*board->getPboard())[i][j]->getFigurine();
+                      ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:912:16: warning: implicit conversion 'Figurine *' -> bool [readability-implicit-bool-conversion]
+            if(f && f->getOwner() == playerType){
+               ^
+               ( != nullptr)
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:928:27: warning: 9996 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    if(evaluationScore >= 9996 || evaluationScore <= -9996){
+                          ^
+/home/katarina/Desktop/vs/10-stratego/Stratego/Sources/game.cpp:928:55: warning: 9996 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+    if(evaluationScore >= 9996 || evaluationScore <= -9996){
+                                                      ^
