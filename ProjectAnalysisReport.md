@@ -38,13 +38,33 @@ Prihvatila sam sve i komandom `run-clang-tidy game.cpp -checks='readability-*' -
 Primeri nekih od izmena:
 ![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-tidy/readability_diff.png)
 
-Kako biste izvršili navedenu analizu, pokrenite skriptu **run_clang_tidy.sh** komandom `bash run_clang_tidy.sh`:
+Kako biste izvršili navedenu analizu, pokrenite skriptu **run_clang_tidy.sh** iz Stratego direktorijuma komandom `bash run_clang_tidy.sh`:
 [run_clang_tidy.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-tidy/run_clang_tidy.sh)
 
 
+## 2. Clang-Format
+Clang-format je alat za automatsko formatiranje koda koji pripada LLVM projektu. Njegova svrha je da dosledno primeni stil kodiranja na C, C++, Java, JavaScript i Objective-C kod, čime se poboljšava čitljivost i održavanje koda. Korisnici mogu prilagoditi pravila formatiranja prema svojim potrebama, a alat automatski preuređuje kod u skladu sa zadatim stilskim pravilima. Nudi više različitih stilova programiranja kao što su : Google, Chromium, LLVM, Mozilla..
+
+Izabrala sam da se moj format zasniva na ClangFormat stilu Google i na njega zatim primenila male izmene.
+
+Prvo sam generisala fajl .clang-format sa Google opcijom za stil: 
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/format1.png)
 
 
+Izmene koje sam primenila uz pomoc vim: 
+TabWidth: 8 -> 4
+IndentWidth: 2 -> 4
+BreakBeforeBraces: Attach -> Allman
+PointerAlignment: Left -> Right
 
+.clang-format pre izmena: [.clang-format](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/.clang-format-pre)
+.clang-format nakon izmena: [.clang-format](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/.clang-format)
+
+Zatim sam primenila izmene na sve header i source fajlove komandom: **clang-format -i -style=file Headers/* Sources/***
+
+Kako biste izvršili navedenu analizu, pokrenite skriptu **run-format.sh** iz Stratego direktorijuma komandom `bash run-format.sh`:
+[run-format.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/run-format.sh)
 
 
 
