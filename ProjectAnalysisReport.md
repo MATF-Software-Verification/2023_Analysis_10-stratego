@@ -52,18 +52,18 @@ Prvo sam generisala fajl .clang-format sa Google opcijom za stil:
 ![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/format1.png)
 
 
-Izmene koje sam primenila uz pomoc vim: 
-TabWidth: 8 -> 4
-IndentWidth: 2 -> 4
-BreakBeforeBraces: Attach -> Allman
-PointerAlignment: Left -> Right
+Izmene koje sam primenila uz pomoc vim:  
+TabWidth: 8 -> 4  
+IndentWidth: 2 -> 4  
+BreakBeforeBraces: Attach -> Allman  
+PointerAlignment: Left -> Right  
 
-.clang-format pre izmena: [.clang-format](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/.clang-format-pre)
-.clang-format nakon izmena: [.clang-format](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/.clang-format)
+.clang-format pre izmena: [.clang-format](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/.clang-format-pre)  
+.clang-format nakon izmena: [.clang-format](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/.clang-format)  
 
-Zatim sam primenila izmene na sve header i source fajlove komandom: **clang-format -i -style=file Headers/* Sources/***
+Zatim sam primenila izmene na sve header i source fajlove komandom: `clang-format -i -style=file Headers/* Sources/* `
 
-Kako biste izvršili navedenu analizu, pokrenite skriptu **run-format.sh** iz Stratego direktorijuma komandom `bash run-format.sh`:
+Kako biste izvršili navedenu analizu, pokrenite skriptu **run-format.sh** iz Stratego direktorijuma komandom `bash run-format.sh`:  
 [run-format.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/run-format.sh)
 
 
