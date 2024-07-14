@@ -9,7 +9,7 @@
 # :wrench: Alati koji su korišćeni:
 * Clang
   - Clang-Tidy
-  - Clazy
+  - Clang-Format
 * Cppcheck
 * Flawfinder
 * Valgrind
