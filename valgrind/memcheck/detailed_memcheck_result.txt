@@ -1,0 +1,6 @@
+==9590== Memcheck, a memory error detector
+==9590== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==9590== Using Valgrind-3.21.0 and LibVEX; rerun with -h for copyright info
+==9590== Command: Desktop-Debug/Stratego
+==9590== Parent PID: 9539
+==9590== 
