@@ -1,6 +1,7 @@
 # Izveštaj analize projekta
 
 
+
 ## 1. Clang-Tidy
 **Clang** je kompajler za programske jezike C, C++, Objective-C i Objective-C++. Clang analizira izvorni kod, stvarajući sintaksno stablo i proveravajući ispravnost tipova i deklaracija. Koristi LLVM za optimizaciju i generisanje konačnog mašinskog koda.
 
@@ -67,4 +68,30 @@ Kako biste izvršili navedenu analizu, pokrenite skriptu **run-format.sh** iz St
 [run-format.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/clang-format/run-format.sh)
 
 
+## 3. Memcheck
+**Valgrind** je okruženje za alatke za debagovanje koje uključuje različite alate za analizu i optimizaciju programa, posebno u kontekstu upravljanja memorijom. Koristi se za identifikaciju različitih vrsta grešaka koje mogu uzrokovati neispravan rad programa, kao što su curenja memorije, neinicijalizovana memorija, pristup van granica memorije i drugo. Neke od ključnih funkcionalnosti Valgrinda: Memcheck, Cachegrind, Callgrind, Helgrind, Massif..
+Valgrind radi tako što prati izvršavanje programa na niskom nivou, što može dovesti do usporavanja programa, ali pruža detaljne informacije koje su korisne za debagovanje i optimizaciju.
 
+Memcheck je jedan od alata unutar Valgrind paketa. Specijalizovan je za detekciju grešaka u korišćenju memorije i najčešće se koristi za otkrivanje problema kao što su curenja memorije, pristupi neinicijalizovanoj memoriji i pristupi van granica alocirane memorije.
+
+Šta Memcheck radi?
+- Memcheck prati sve alokacije i dealokacije memorije u programu. Ako program alocira memoriju, ali je nikada ne oslobodi, Memcheck će prijaviti takvo curenje memorije.
+- Kada se memorija koristi pre nego što je inicijalizovana, može dovesti do nepredvidivog ponašanja programa. Memcheck pomaže u identifikaciji takvih pristupa.
+- Memcheck može prepoznati kada program pokušava da pristupi memoriji izvan granica koje su mu dodeljene. Ovo uključuje slučajeve kada se pokušava pristupiti neregistrovanoj memoriji ili memoriji koja je već oslobođena.
+- Ako različiti delovi programa pogrešno koriste istu memoriju, Memcheck može pomoći u identifikaciji tih problema.
+
+Memcheck se koristi iz komandne linije i obično se pokreće uz pomoć Valgrind alata sa opcijama koje omogućavaju detaljno praćenje i analizu izvršavanja programa. Iako može usporiti izvršavanje programa, informacije koje pruža su veoma korisne za otkrivanje i ispravljanje problema sa memorijom.
+
+Koristila sam alat memcheck upravo za otkrivanje grešaka u memoriji kao što su: curenje memorije, nevažeći pristup memoriji ili pristup neinizijalizovanoj memoriji.
+
+Program sam pokrenula komandom `valgrind --tool=memcheck --log-file=basic_memcheck_result.txt ./Desktop-Debug/Stratego` iz build direktorijuma. Generisan je fajl **basic_memcheck_result.txt** koji sadrži izveštaj o rezultatima analize. 
+[basic_memcheck_result.txt](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/memcheck/basic_memcheck_result.txt)
+
+Analizom ovog fajla uočeni su sledeći problemi: invalidno čitanje veličine 4 bajta, što ukazuje na pristup već oslobodjenoj memoriji, kao i greške u radu sa pthread mutex-ima koje se odnose na oslobadjanje resursa. Ove greške, koje se javljaju prilikom destrukcije objekata klase QWaylandDisplay i QWaylandIntegration iz QtWaylandClient biblioteke, sugerišu da bi moglo doći do problema u sinhronizaciji ili u načinu na koji se resursi oslobađaju pri zatvaranju aplikacije. Iako je ukupna količina memorije koja se još uvek koristi na kraju izvršavanja visoka, određeni blokovi memorije su identifikovani kao izgubljeni, što dodatno ukazuje na potrebu za detaljnijom analizom i eventualnim refaktoringom koda kako bi se obezbedila stabilnost aplikacije i prevencija budućih problema u radu sa memorijom. 
+Preporučuje mi da se fokusiram na deo koda vezan za destruktore u QtWaylandClient biblioteci, proveravajući kako se resursi oslobađaju. Zatim da proverim da li su objekti pravilno inicijalizovani i da li se oslobađaju u ispravnom redosledu.  Takođe, potrebno je obratiti pažnju na upotrebu mutexa u kodu i osigurati da se svaki lock na mutexu odgovarajuće odblokira (unlock) i da se ne koristi nakon što je oslobođen.
+
+Alat je sugerisao i upotrebu **--leak-check=full** flega kako bih dobila detaljnije informacije o neslobodjenoj memoriji i kao izlaz komande `valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="detailed_memcheck_result.txt" Desktop-Debug/Stratego` dobila sam fajl **detailed_memcheck_result.txt** koji sadrži izveštaj o rezultatima detaljnije analize:
+[detailed_memcheck_result.txt](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/memcheck/detailed_memcheck_result.txt)
+
+Kako biste izvršili navedenu analizu, pokrenite skriptu **run-memcheck.sh** iz build direktorijuma komandom `bash run-memcheck.sh`:  
+[run-memcheck.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/memcheck/run_memcheck.sh)
