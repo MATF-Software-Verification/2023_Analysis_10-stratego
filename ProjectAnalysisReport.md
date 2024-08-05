@@ -70,6 +70,7 @@ Kako biste izvršili navedenu analizu, pokrenite skriptu **run-format.sh** iz St
 
 ## 3. Memcheck
 **Valgrind** je okruženje za alatke za debagovanje koje uključuje različite alate za analizu i optimizaciju programa, posebno u kontekstu upravljanja memorijom. Koristi se za identifikaciju različitih vrsta grešaka koje mogu uzrokovati neispravan rad programa, kao što su curenja memorije, neinicijalizovana memorija, pristup van granica memorije i drugo. Neke od ključnih funkcionalnosti Valgrinda: Memcheck, Cachegrind, Callgrind, Helgrind, Massif..
+
 Valgrind radi tako što prati izvršavanje programa na niskom nivou, što može dovesti do usporavanja programa, ali pruža detaljne informacije koje su korisne za debagovanje i optimizaciju.
 
 Memcheck je jedan od alata unutar Valgrind paketa. Specijalizovan je za detekciju grešaka u korišćenju memorije i najčešće se koristi za otkrivanje problema kao što su curenja memorije, pristupi neinicijalizovanoj memoriji i pristupi van granica alocirane memorije.
@@ -95,3 +96,26 @@ Alat je sugerisao i upotrebu **--leak-check=full** flega kako bih dobila detaljn
 
 Kako biste izvršili navedenu analizu, pokrenite skriptu **run-memcheck.sh** iz build direktorijuma komandom `bash run-memcheck.sh`:  
 [run-memcheck.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/memcheck/run_memcheck.sh)
+
+## 4. Callgrind
+Callgrind je alat za analizu performansi koji je deo Valgrind suite. On je specijalizovan za profilisanje programa, fokusirajući se na praćenje i merenje potrošnje CPU vremena tokom izvršavanja. Kada se koristi, Callgrind beleži informacije o pozivima funkcija, uključujući koliko često su funkcije pozivane i koliko CPU vremena su potrošile. Ovi podaci pomažu u identifikaciji potencijalnih uskih grla i neefikasnosti u kodu. 
+
+Komandom `valgrind --tool=callgrind Desktop-Debug/Stratego` pokrenula sam program:
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/callgrind/callgrind1.png)
+
+Kada se izvrši ova komanda, Callgrind prikuplja detaljne informacije o tome koliko često se funkcije pozivaju i koliko CPU vremena troše. Rezultati ove analize se čuvaju u fajlu (na primer, callgrind.out.xxxx) i sadrzi detaljan pregled ponašanja programa(izvršene instrukcije, alokacija i dealokacija memorije, caller/callee odnos izmedju funkcija, broj pogodaka i promašaja keša...). 
+
+Rezultate analize sam analizirala uz pomoć grafičkog alata **KCachegrind**, koji pruža vizuelni prikaz prikupljenih informacija, omogućavajući korisnicima da bolje razumeju kako se resursi koriste i da optimizuju performanse programa. Korišćenje Callgrinda i KCachegrinda zajedno omogućava duboku analizu i poboljšanje efikasnosti aplikacija.
+
+Pokrenula sam ga komandom: `kcachegrind callgrind.out.17112`
+
+Vizuelizacija: 
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/callgrind/callgrind2.png)
+
+
+Ono što nas interesuje su funkcije se najviše pozivaju. S leve strane nalazimo informacije o broju poziva svake funkcije i o broju instrukcija koje je izvršavanje funkcije zahtevalo, kako samostalno, tako i uključujući instrukcije koje su potekle iz drugih funkcija koje je ta funkcija pozivala. Na desnoj strani možemo izabrati opciju "All Callers" da bismo videli sve funkcije koje su pozivale funkciju od interesa. Takođe, na dnu desne strane, možemo pregledati graf poziva funkcije izborom opcije "Call Graph".
+
+Graf poziva:
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/callgrind/graph.png)
+
+
