@@ -124,27 +124,27 @@ Graf poziva:
 ## 5. Cppcheck
 Cppcheck je alat za statičku analizu koda namenjen programima napisanih u C i C++ jezicima. Njegova glavna svrha je da pronađe greške i potencijalne probleme u kodu bez potrebe za njegovim izvršavanjem. Cppcheck može otkriti različite vrste problema, kao što su:
 
-    - **Greške u pamćenju**: Kao što su memorijska curenja i korišćenje neinicijalizovane memorije.
-    - **Greške u resursima**: Kao što su curenja resursa (npr. fajlovi ili soketi koji nisu zatvoreni).
-    - **Logičke greške**: Kao što su potencijalno pogrešni uslovi u if-else strukturama.
-    - **Problemi sa stilom**: Kao što su redundantne ili nepotrebne strukture koda.
+    - Greške u pamćenju: Kao što su memorijska curenja i korišćenje neinicijalizovane memorije
+    - Greške u resursima: Kao što su curenja resursa (npr. fajlovi ili soketi koji nisu zatvoreni)
+    - Logičke greške: Kao što su potencijalno pogrešni uslovi u if-else strukturama
+    - Problemi sa stilom: Kao što su redundantne ili nepotrebne strukture koda
 
-Cppcheck je fleksibilan i prilagodljiv, omogućava prilagođavanje pravila analize, isključivanje određenih tipova provera, i generisanje izveštaja u različitim formatima. Ovaj alat može biti integrisan u razvojne tokove, poput CI/CD okruženja, i koristi se kako bi se obezbedio visok kvalitet i sigurnost koda pre nego što se kod pusti u proizvodno okruženje.
-Ja sam koristila iz komandne linije, a može se koristiti  u integrisanim razvojnom okruženju (IDE) ili kao deo CI/CD procesa. 
+Cppcheck je fleksibilan i prilagodljiv, omogućava prilagođavanje pravila analize, isključivanje određenih tipova provera i generisanje izveštaja u različitim formatima. Ovaj alat može biti integrisan u razvojne tokove, poput CI/CD okruženja, i koristi se kako bi se obezbedio visok kvalitet i sigurnost koda pre nego što se kod pusti u proizvodno okruženje.
+Ja sam koristila iz komandne linije, a može se koristiti  u integrisanom razvojnom okruženju (IDE) ili kao deo CI/CD procesa. 
 
 Pre primene Cppcheck alata, potrebno je instalirati ga pomoću sledeće komande: `sudo apt-get install cppcheck`
 
-Cppcheck se može koristiti za analizu pojedinačnih fajlova ili celog projekta, primenila sam oba pristupa: 
-1. Za pokretanje osnovne analize na C++ fajlu game.cpp iz Stratego direktorijuma: `cppcheck Sources/game.cpp` . Tokom analize, alat nije ispisao nikakve rezultate, što obično znači da nije pronašao greške, upozorenja ili napomene u analiziranim datotekama.
+Cppcheck se može koristiti za analizu pojedinačnih fajlova ili celog projekta. Primenila sam oba pristupa: 
+1. POsnovna analiza C++ fajla game.cpp iz direktorijuma Stratego pokreće se komandom: `cppcheck Sources/game.cpp` . Tokom analize, alat nije ispisao nikakve rezultate, što obično znači da nije pronašao greške, upozorenja ili napomene u analiziranim datotekama.
 
 
 2. Alat sam primenila i za analizu celokupnog projekta koristeći komandu: `cppcheck --enable=all --suppress=missingInclude --quiet --output-file=cppcheck_results.txt -ibuild/ .` kojom pregleda sve fajlove unutar specificiranog direktorijuma Stratego/.
 Prilikom pokretanja alata cppcheck, koristila sam dodatne opcije koje imaju specifična značenja:
-- **--enable=all** omogućava sve nivoe provere i analize koje cppcheck nudi, to uključuje sve vrste upozorenja, od najvažnijih do manje kritičnih, kao i detekciju stilskih problema.
-- **--suppress=missingInclude** koristi se za potiskivanje specifičnih vrsta upozorenja, u ovom slučaju upozorenja koja se odnose na nedostajuće #include direktive biće ignorisana
-- **--quiet** smanjuje količinu izlaza na minimum, pruža samo osnovne informacije i ne prikazuje dodatne informacije kao što su informativne poruke ili opisi
-- **--output-file=cppcheck_results.txt** definiše putanju i ime fajla u koji će cppcheck sačuvati rezultate analize
-- **-ibuild/** definiše direktorijum koji treba da bude ignorisan tokom analize
+- --enable=all omogućava sve nivoe provere i analize koje cppcheck nudi, to uključuje sve vrste upozorenja, od najvažnijih do manje kritičnih, kao i detekciju stilskih problema.
+- --suppress=missingInclude koristi se za potiskivanje specifičnih vrsta upozorenja, u ovom slučaju upozorenja koja se odnose na nedostajuće #include direktive biće ignorisana
+- --quiet smanjuje količinu izlaza na minimum, pruža samo osnovne informacije i ne prikazuje dodatne informacije kao što su informativne poruke ili opisi
+- --output-file=cppcheck_results.txt definiše putanju i ime fajla u koji će cppcheck sačuvati rezultate analize
+- -ibuild/ definiše direktorijum koji treba da bude ignorisan tokom analize
 
 Ignorisanje build/ direktorijuma omogućava fokusiranje na relevantne izvore koda, smanjuje šum u izveštaju i izbegava lažne greške i upozorenja uzrokovane analizom privremenih i generisanih datoteka.
 
@@ -155,6 +155,7 @@ Bash skripta za pokretanje: [cppcheck.sh](https://github.com/MATF-Software-Verif
 Rezultati su sačuvani u fajlu: [cppcheck_results.txt](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck_results.txt)
 
 Rezultati analize mogu biti sačuvani u različitim formatima, uključujući XML, JSON i Lint. Svaki format nudi svoje prednosti: XML i JSON su idealni za dalju obradu i generisanje izveštaja zbog svoje strukturirane prirode, dok je tekstualni format jednostavan za pregled i brzo razumevanje rezultata. 
+
 Pored izveštaja u .txt formatu, takođe sam pokrenula komandu za generisanje izveštaja u .xml formatu.
 
 Bash skripta za pokretanje: [cppcheck_xml.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck_xml.sh)
