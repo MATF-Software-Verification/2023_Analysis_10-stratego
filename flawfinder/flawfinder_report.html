@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf8">
+<title>Flawfinder Results</title>
+<meta name="author" content="David A. Wheeler">
+<meta name="keywords" lang="en" content="flawfinder results, security scan">
+</head>
+<body>
+<h1>Flawfinder Results</h1>
+Here are the security scan results from
+<a href="https://dwheeler.com/flawfinder">Flawfinder version 2.0.19</a>,
+(C) 2001-2019 <a href="https://dwheeler.com">David A. Wheeler</a>.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 222
+<p>
+Examining ./Headers/figurinetype.h <br>
+Examining ./Headers/tablesetupscene.h <br>
+Examining ./Headers/musicthread.h <br>
+Examining ./Headers/dialog.h <br>
+Examining ./Headers/mainwindow.h <br>
+Examining ./Headers/tablefigurinescene.h <br>
+Examining ./Headers/enums.h <br>
+Examining ./Headers/gamescene.h <br>
+Examining ./Headers/player.h <br>
+Examining ./Headers/figurine.h <br>
+Examining ./Headers/game.h <br>
+Examining ./Headers/field.h <br>
+Examining ./Headers/board.h <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/mocs_compilation.cpp <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/moc_predefs.h <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/include/ui_dialog.h <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/include/ui_mainwindow.h <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_mainwindow.cpp <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_tablefigurinescene.cpp <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_tablesetupscene.cpp <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_gamescene.cpp <br>
+Examining ./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_dialog.cpp <br>
+Examining ./build/Desktop-Debug/qrc_images.cpp <br>
+Examining ./build/Desktop-Debug/CMakeFiles/3.29.3/CompilerIdCXX/CMakeCXXCompilerId.cpp <br>
+Examining ./build/Desktop-Debug/qrc_sounds.cpp <br>
+Examining ./build/Desktop-Debug/qrc_icons.cpp <br>
+Examining ./build/CMakeFiles/3.27.4/CompilerIdCXX/CMakeCXXCompilerId.cpp <br>
+Examining ./Sources/mainwindow.cpp <br>
+Examining ./Sources/main.cpp <br>
+Examining ./Sources/gamescene.cpp <br>
+Examining ./Sources/field.cpp <br>
+Examining ./Sources/figurine.cpp <br>
+Examining ./Sources/dialog.cpp <br>
+Examining ./Sources/board.cpp <br>
+Examining ./Sources/musicthread.cpp <br>
+Examining ./Sources/tablesetupscene.cpp <br>
+Examining ./Sources/tablefigurinescene.cpp <br>
+Examining ./Sources/game.cpp <br>
+Examining ./Sources/player.cpp <br>
+
+<h2>Final Results</h2>
+<ul>
+<li>./Sources/game.cpp:65: <b>  [3] </b> (random) <i> srand:
+  This function is not sufficiently random for security-related functions
+  such as key and nonce creation (<a
+  href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a>). Use a
+  more secure technique for acquiring random values. </i>
+<li>./Sources/mainwindow.cpp:313: <b>  [3] </b> (random) <i> srand:
+  This function is not sufficiently random for security-related functions
+  such as key and nonce creation (<a
+  href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a>). Use a
+  more secure technique for acquiring random values. </i>
+<li>./Sources/mainwindow.cpp:665: <b>  [3] </b> (random) <i> srand:
+  This function is not sufficiently random for security-related functions
+  such as key and nonce creation (<a
+  href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a>). Use a
+  more secure technique for acquiring random values. </i>
+<li>./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_dialog.cpp:26: <b>  [2] </b> (buffer) <i> char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (<a
+  href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a
+  href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).
+  Perform bounds checking, use functions that limit length, or ensure that
+  the size is larger than the maximum possible length. </i>
+<li>./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_gamescene.cpp:26: <b>  [2] </b> (buffer) <i> char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (<a
+  href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a
+  href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).
+  Perform bounds checking, use functions that limit length, or ensure that
+  the size is larger than the maximum possible length. </i>
+<li>./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_mainwindow.cpp:26: <b>  [2] </b> (buffer) <i> char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (<a
+  href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a
+  href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).
+  Perform bounds checking, use functions that limit length, or ensure that
+  the size is larger than the maximum possible length. </i>
+<li>./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_tablefigurinescene.cpp:26: <b>  [2] </b> (buffer) <i> char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (<a
+  href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a
+  href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).
+  Perform bounds checking, use functions that limit length, or ensure that
+  the size is larger than the maximum possible length. </i>
+<li>./build/Desktop-Debug/Stratego_autogen/D2MWKIZDYH/moc_tablesetupscene.cpp:26: <b>  [2] </b> (buffer) <i> char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (<a
+  href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a
+  href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).
+  Perform bounds checking, use functions that limit length, or ensure that
+  the size is larger than the maximum possible length. </i>
+</ul>
+<h2>Analysis Summary</h2>
+<p>
+Hits = 8
+<br>
+Lines analyzed = 1325484 in approximately 85.97 seconds (15418 lines/second)
+<br>
+Physical Source Lines of Code (SLOC) = 1323907
+<br>
+Hits@level = [0]   0 [1]   0 [2]   5 [3]   3 [4]   0 [5]   0 <br>
+Hits@level+ = [0+]   8 [1+]   8 [2+]   8 [3+]   3 [4+]   0 [5+]   0 <br>
+Hits/KSLOC@level+ = [0+] 0.00604272 [1+] 0.00604272 [2+] 0.00604272 [3+] 0.00226602 [4+]   0 [5+]   0 <br>
+Dot directories skipped = 3 (--followdotdir overrides)
+<br>
+Minimum risk level = 1
+<br>
+Not every hit is necessarily a security vulnerability.
+You can inhibit a report by adding a comment in this form:
+// flawfinder: ignore
+Make *sure* it's a false positive!
+You can use the option --neverignore to show these.
+<br>
+There may be other security vulnerabilities; review your code!
+<br>
+See '<a href="https://dwheeler.com/secure-programs">Secure Programming HOWTO</a>'
+(<a href="https://dwheeler.com/secure-programs">https://dwheeler.com/secure-programs</a>) for more information.
+</body>
+</html>
