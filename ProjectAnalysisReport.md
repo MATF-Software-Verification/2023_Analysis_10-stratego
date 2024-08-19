@@ -103,7 +103,7 @@ Callgrind je alat za analizu performansi koji je deo Valgrind suite. On je speci
 Komandom `valgrind --tool=callgrind Desktop-Debug/Stratego` pokrenula sam program:
 ![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/callgrind/callgrind1.png)
 
-Kada se izvrši ova komanda, Callgrind prikuplja detaljne informacije o tome koliko često se funkcije pozivaju i koliko CPU vremena troše. Rezultati ove analize se čuvaju u fajlu (na primer, callgrind.out.xxxx) i sadrzi detaljan pregled ponašanja programa(izvršene instrukcije, alokacija i dealokacija memorije, caller/callee odnos izmedju funkcija, broj pogodaka i promašaja keša...). 
+Kada se izvrši ova komanda, Callgrind prikuplja detaljne informacije o tome koliko često se funkcije pozivaju i koliko CPU vremena troše. Rezultati ove analize se čuvaju u fajlu (na primer, callgrind.out.xxxx) koji sadrzi detaljan pregled ponašanja programa (izvršene instrukcije, alokacija i dealokacija memorije, caller/callee odnos izmedju funkcija, broj pogodaka i promašaja keša...). 
 
 Rezultate analize sam analizirala uz pomoć grafičkog alata **KCachegrind**, koji pruža vizuelni prikaz prikupljenih informacija, omogućavajući korisnicima da bolje razumeju kako se resursi koriste i da optimizuju performanse programa. Korišćenje Callgrinda i KCachegrinda zajedno omogućava duboku analizu i poboljšanje efikasnosti aplikacija.
 
@@ -113,9 +113,59 @@ Vizuelizacija:
 ![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/callgrind/callgrind2.png)
 
 
-Ono što nas interesuje su funkcije se najviše pozivaju. S leve strane nalazimo informacije o broju poziva svake funkcije i o broju instrukcija koje je izvršavanje funkcije zahtevalo, kako samostalno, tako i uključujući instrukcije koje su potekle iz drugih funkcija koje je ta funkcija pozivala. Na desnoj strani možemo izabrati opciju "All Callers" da bismo videli sve funkcije koje su pozivale funkciju od interesa. Takođe, na dnu desne strane, možemo pregledati graf poziva funkcije izborom opcije "Call Graph".
+
+Ono što nas interesuje su funkcije se najviše pozivaju. S leve strane nalazimo informacije o broju poziva svake funkcije i o broju instrukcija koje je izvršavanje funkcije zahtevalo, kako samostalno, tako i uključujući instrukcije koje su potekle iz drugih funkcija koje je ta funkcija pozivala. Na desnoj strani možemo izabrati opciju "Callee map" za prikaz odnosa između funkcija u programskom kodu, gde se prikazuje koja funkcija poziva koju drugu funkciju. Jedna od korisnih opcija je i "All Callers" koja se koristi kako bismo videli sve funkcije koje su pozivale funkciju od interesa.
+
+Na dnu desne strane, možemo pregledati graf poziva funkcije izborom opcije "Call Graph".
 
 Graf poziva:
 ![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/valgrind/callgrind/graph.png)
 
+## 5. Cppcheck
+Cppcheck je alat za statičku analizu koda namenjen programima napisanih u C i C++ jezicima. Njegova glavna svrha je da pronađe greške i potencijalne probleme u kodu bez potrebe za njegovim izvršavanjem. Cppcheck može otkriti različite vrste problema, kao što su:
 
+    - **Greške u pamćenju**: Kao što su memorijska curenja i korišćenje neinicijalizovane memorije.
+    - **Greške u resursima**: Kao što su curenja resursa (npr. fajlovi ili soketi koji nisu zatvoreni).
+    - **Logičke greške**: Kao što su potencijalno pogrešni uslovi u if-else strukturama.
+    - **Problemi sa stilom**: Kao što su redundantne ili nepotrebne strukture koda.
+
+Cppcheck je fleksibilan i prilagodljiv, omogućava prilagođavanje pravila analize, isključivanje određenih tipova provera, i generisanje izveštaja u različitim formatima. Ovaj alat može biti integrisan u razvojne tokove, poput CI/CD okruženja, i koristi se kako bi se obezbedio visok kvalitet i sigurnost koda pre nego što se kod pusti u proizvodno okruženje.
+Ja sam koristila iz komandne linije, a može se koristiti  u integrisanim razvojnom okruženju (IDE) ili kao deo CI/CD procesa. 
+
+Pre primene Cppcheck alata, potrebno je instalirati ga pomoću sledeće komande: `sudo apt-get install cppcheck`
+
+Cppcheck se može koristiti za analizu pojedinačnih fajlova ili celog projekta, primenila sam oba pristupa: 
+1. Za pokretanje osnovne analize na C++ fajlu game.cpp iz Stratego direktorijuma: `cppcheck Sources/game.cpp` . Tokom analize, alat nije ispisao nikakve rezultate, što obično znači da nije pronašao greške, upozorenja ili napomene u analiziranim datotekama.
+
+
+2. Alat sam primenila i za analizu celokupnog projekta koristeći komandu: `cppcheck --enable=all --suppress=missingInclude --quiet --output-file=cppcheck_results.txt -ibuild/ .` kojom pregleda sve fajlove unutar specificiranog direktorijuma Stratego/.
+Prilikom pokretanja alata cppcheck, koristila sam dodatne opcije koje imaju specifična značenja:
+- **--enable=all** omogućava sve nivoe provere i analize koje cppcheck nudi, to uključuje sve vrste upozorenja, od najvažnijih do manje kritičnih, kao i detekciju stilskih problema.
+- **--suppress=missingInclude** koristi se za potiskivanje specifičnih vrsta upozorenja, u ovom slučaju upozorenja koja se odnose na nedostajuće #include direktive biće ignorisana
+- **--quiet** smanjuje količinu izlaza na minimum, pruža samo osnovne informacije i ne prikazuje dodatne informacije kao što su informativne poruke ili opisi
+- **--output-file=cppcheck_results.txt** definiše putanju i ime fajla u koji će cppcheck sačuvati rezultate analize
+- **-ibuild/** definiše direktorijum koji treba da bude ignorisan tokom analize
+
+Ignorisanje build/ direktorijuma omogućava fokusiranje na relevantne izvore koda, smanjuje šum u izveštaju i izbegava lažne greške i upozorenja uzrokovane analizom privremenih i generisanih datoteka.
+
+Bash skripta za pokretanje: [cppcheck.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck.sh)
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck1.png)
+
+Rezultati su sačuvani u fajlu: [cppcheck_results.txt](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck_results.txt)
+
+Rezultati analize mogu biti sačuvani u različitim formatima, uključujući XML, JSON i Lint. Svaki format nudi svoje prednosti: XML i JSON su idealni za dalju obradu i generisanje izveštaja zbog svoje strukturirane prirode, dok je tekstualni format jednostavan za pregled i brzo razumevanje rezultata. 
+Pored izveštaja u .txt formatu, takođe sam pokrenula komandu za generisanje izveštaja u .xml formatu.
+
+Bash skripta za pokretanje: [cppcheck_xml.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck_xml.sh)
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck2.png)
+
+Rezultati su sačuvani u fajlu: [output.xml](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/output.xml)
+
+Skripta `cppcheck_xml.sh` ne samo da obavlja analizu koda pomoću alata cppcheck i beleži rezultate u XML formatu, već i koristi alat **cppcheck-htmlreport** za generisanje HTML izveštaja. Ovaj HTML izveštaj omogućava lakši vizuelni pregled pronađenih problema.
+
+Nakon završetka rada skripte, automatski se otvara generisani HTML fajl (report/index.html) u Firefox web pregledaču kako bi se rezultati mogli pregledati.
+
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck3.png)
