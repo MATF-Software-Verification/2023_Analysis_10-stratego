@@ -1,0 +1,425 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - [project name]</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(cb) {
+        var elements = document.querySelectorAll("." + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("id-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleSeverity(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+        var elements = document.querySelectorAll(".sev_" + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("severity-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleTool(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+
+        var elements;
+        if (cb.id == "clang-tidy")
+            elements = document.querySelectorAll("[class^=clang-tidy-]");
+        else
+            elements = document.querySelectorAll(".issue:not([class^=clang-tidy-])");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("tool-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll(".idToggle");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var changed = elements[i].checked != elements[0].checked;
+          if (changed) {
+            elements[i].checked = elements[0].checked;
+            toggleDisplay(elements[i]);
+          }
+        }
+      }
+
+      function filterFile(filter) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector("tr").querySelector("td").textContent.toLowerCase().includes(filter.toLowerCase());
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+      }
+
+      function filterText(text) {
+        filter = text.toLowerCase();
+        var elements = document.querySelectorAll(".issue");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = false;
+          var fields = elements[i].querySelectorAll("td");
+          for (var n = 0, num = fields.length; n < num; n++) {
+            if (fields[n].textContent.toLowerCase().includes(filter)) {
+              visible = true;
+              break;
+            }
+          }
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+
+        updateFileRows();
+      }
+
+      function updateFileRows(element) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector(".issue:not(.id-filtered):not(.severity-filtered):not(.tool-filtered):not(.text-filtered)");
+          elements[i].classList.toggle("file-filtered", !visible);
+        }
+      }
+
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header" class="header">
+      <h1>Cppcheck report - [project name]</h1>
+      <div id="filters">
+
+        <label class="checkBtn"><input type="checkbox" onclick="toggleSeverity(this)" id="error"checked/>error</label>
+        <label class="checkBtn"><input type="checkbox" onclick="toggleSeverity(this)" id="warning"checked/>warning</label>
+        <label class="checkBtn disabled"><input type="checkbox" onclick="toggleSeverity(this)" id="portability"disabled/>portability</label>
+        <label class="checkBtn"><input type="checkbox" onclick="toggleSeverity(this)" id="performance"checked/>performance</label>
+        <label class="checkBtn"><input type="checkbox" onclick="toggleSeverity(this)" id="style"checked/>style</label>
+        <label class="checkBtn"><input type="checkbox" onclick="toggleSeverity(this)" id="information"checked/>information</label>
+        | 
+        <label class="checkBtn"><input type="checkbox" onclick="toggleTool(this)" id="cppcheck"checked/>cppcheck</label>
+        <label class="checkBtn disabled"><input type="checkbox" onclick="toggleTool(this)" id="clang-tidy"disabled/>clang-tidy</label>
+        | 
+        <label class="severityHeader">File: <input type="text" oninput="filterFile(this.value)"/></label>
+        <label class="severityHeader">Filter: <input type="text" oninput="filterText(this.value)"/></label>
+      </div>
+
+    </div>
+
+    <div id="menu_index">
+     <p><a href="index.html">Defect summary</a> </p>
+
+       <label><input type="checkbox" class="idToggle" onclick="toggleAll()" checked> Toggle all</label>
+       <table>
+           <tr><th>Show</th><th>#</th><th>Defect ID</th></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="missingIncludeSystem" name="missingIncludeSystem" checked></td><td>99</td><td>missingIncludeSystem</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="unusedFunction" name="unusedFunction" checked></td><td>26</td><td>unusedFunction</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="uninitMemberVar" name="uninitMemberVar" checked></td><td>13</td><td>uninitMemberVar</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="unreadVariable" name="unreadVariable" checked></td><td>8</td><td>unreadVariable</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="variableScope" name="variableScope" checked></td><td>8</td><td>variableScope</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="constVariablePointer" name="constVariablePointer" checked></td><td>7</td><td>constVariablePointer</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="passedByValue" name="passedByValue" checked></td><td>7</td><td>passedByValue</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="noExplicitConstructor" name="noExplicitConstructor" checked></td><td>3</td><td>noExplicitConstructor</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="useInitializationList" name="useInitializationList" checked></td><td>2</td><td>useInitializationList</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="constParameterPointer" name="constParameterPointer" checked></td><td>1</td><td>constParameterPointer</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="knownConditionTrueFalse" name="knownConditionTrueFalse" checked></td><td>1</td><td>knownConditionTrueFalse</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="noOperatorEq" name="noOperatorEq" checked></td><td>1</td><td>noOperatorEq</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="shadowVariable" name="shadowVariable" checked></td><td>1</td><td>shadowVariable</td></tr>
+            <tr><td><input type="checkbox" class="idToggle" onclick="toggleDisplay(this)" id="unknownMacro" name="unknownMacro" checked></td><td>1</td><td>unknownMacro</td></tr>
+           <tr><td></td><td>178</td><td>total</td></tr>
+       </table>
+       <p><a href="stats.html">Statistics</a></p>
+    </div>
+    <div id="content_index">
+
+       <table class="summaryTable">
+       <tr><th>Line</th><th>Id</th><th>CWE</th><th>Severity</th><th>Message</th></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="0.html">Headers/board.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="0.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="noExplicitConstructor sev_style issue"><td><a href="0.html#line-24">24</a></td><td>noExplicitConstructor</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Class &apos;Board&apos; has a constructor with 1 argument that is not explicit.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="4.html">Headers/dialog.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="4.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QDialog&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="4.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="4.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="1.html">Headers/field.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="1.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="1.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPen&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="1.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPointF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="1.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QRectF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="1.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="noExplicitConstructor sev_style issue"><td><a href="1.html#line-29">29</a></td><td>noExplicitConstructor</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Class &apos;Field&apos; has a constructor with 1 argument that is not explicit.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="2.html">Headers/figurine.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="2.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="2.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPainter&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="2.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QRectF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="2.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="2.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="2.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="6.html">Headers/game.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;stdlib.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;time.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QLabel&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMessageBox&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-10">10</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="6.html#line-11">11</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="7.html">Headers/gamescene.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-10">10</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QSound&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-11">11</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QSoundEffect&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="7.html#line-12">12</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="5.html">Headers/mainwindow.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;stdlib.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;time.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QColor&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-10">10</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-11">11</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGridLayout&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-12">12</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QLabel&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-13">13</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QListWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-14">14</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QListWidgetItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-15">15</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMainWindow&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-16">16</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-17">17</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMediaPlaylist&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-18">18</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMessageBox&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-19">19</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPainter&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-20">20</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPushButton&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-21">21</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="5.html#line-22">22</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;set&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="9.html">Headers/musicthread.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="9.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="9.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="9.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QThread&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="9.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="unknownMacro sev_error issue"><td><a href="9.html#line-33">33</a></td><td>unknownMacro</td><td></td><td>error</td><td class="error">There is an unknown macro here somewhere. Configuration is required. If slots is a macro then please configure it.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="8.html">Headers/player.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="8.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;cmath&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="8.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="noExplicitConstructor sev_style issue"><td><a href="8.html#line-20">20</a></td><td>noExplicitConstructor</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Class &apos;Player&apos; has a constructor with 1 argument that is not explicit.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="10.html">Headers/tablefigurinescene.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="10.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="10.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="10.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="10.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="10.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="11.html">Headers/tablesetupscene.h</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="11.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="11.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="11.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="11.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="11.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="3.html">Sources/board.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="3.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-7">7</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setBoard&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-11">11</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setPboard&apos; is never used.</td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="3.html#line-22">22</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;f&apos; can be declared as pointer to const</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="3.html#line-53">53</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;state&apos; should be passed by const reference.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-53">53</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setField&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-65">65</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;checkPlayerSetup&apos; is never used.</td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="3.html#line-99">99</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;f&apos; can be declared as pointer to const</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-110">110</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getFirstRowFree&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-112">112</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getAllFigurinesSet&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="3.html#line-114">114</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getBombsNotBlockingWay&apos; is never used.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-116">116</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::firstRowFree&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-116">116</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::allFigurinesSet&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-116">116</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::bombsNotBlockingWay&apos; is not initialized in the constructor.</td></tr>
+         <tr class="noOperatorEq sev_warning issue"><td><a href="3.html#line-118">118</a></td><td>noOperatorEq</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Class &apos;Board&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-152">152</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::m_pboard&apos; is not initialized in the copy constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-165">165</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::m_pboard&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-165">165</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::firstRowFree&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-165">165</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::allFigurinesSet&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="3.html#line-165">165</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Board::bombsNotBlockingWay&apos; is not initialized in the constructor.</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="3.html#line-165">165</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;newBoard&apos; should be passed by const reference.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="12.html">Sources/dialog.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="12.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QTime&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="13.html">Sources/field.cpp</a></td></tr>
+         <tr class="useInitializationList sev_performance issue"><td><a href="13.html#line-20">20</a></td><td>useInitializationList</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Variable &apos;m_fig&apos; is assigned in constructor body. Consider performing initialization in initialization list.</td></tr>
+         <tr class="useInitializationList sev_performance issue"><td><a href="13.html#line-34">34</a></td><td>useInitializationList</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Variable &apos;m_fig&apos; is assigned in constructor body. Consider performing initialization in initialization list.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="13.html#line-85">85</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;paint&apos; is never used.</td></tr>
+         <tr class="shadowVariable sev_style issue"><td><a href="13.html#line-151">151</a></td><td>shadowVariable</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Local variable &apos;padding&apos; shadows outer variable</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="13.html#line-188">188</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;other&apos; should be passed by const reference.</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="13.html#line-231">231</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;fig&apos; should be passed by const reference.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="13.html#line-231">231</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setFig&apos; is never used.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="14.html">Sources/figurine.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="14.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="14.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPen&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="14.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPixmap&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="14.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPointF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="14.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="14.html#line-94">94</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;other&apos; should be passed by const reference.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="14.html#line-322">322</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;whereCanMove&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="14.html#line-590">590</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getCrossed&apos; is never used.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="15.html">Sources/game.cpp</a></td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="15.html#line-13">13</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;f&apos; can be declared as pointer to const</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="15.html#line-27">27</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Game::m_notification&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="15.html#line-27">27</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Game::m_difficulty&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="15.html#line-39">39</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Game::m_msg&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="15.html#line-39">39</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Game::m_notification&apos; is not initialized in the constructor.</td></tr>
+         <tr class="uninitMemberVar sev_warning issue"><td><a href="15.html#line-39">39</a></td><td>uninitMemberVar</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>warning</td><td class="warning">Member variable &apos;Game::m_difficulty&apos; is not initialized in the constructor.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-59">59</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;playGame&apos; is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-160">160</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;OldI&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-160">160</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;OldI&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-161">161</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;OldJ&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-161">161</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;OldJ&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-162">162</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;NewI&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-162">162</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;NewI&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-163">163</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;NewJ&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-163">163</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;NewJ&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-230">230</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;OldI&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-230">230</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;OldI&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-231">231</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;OldJ&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-231">231</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;OldJ&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-232">232</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;NewI&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-232">232</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;NewI&apos; is assigned a value that is never used.</td></tr>
+         <tr class="variableScope sev_style issue"><td><a href="15.html#line-233">233</a></td><td>variableScope</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>The scope of the variable &apos;NewJ&apos; can be reduced.</td></tr>
+         <tr class="unreadVariable sev_style issue"><td><a href="15.html#line-233">233</a></td><td>unreadVariable</td><td><a href="https://cwe.mitre.org/data/definitions/563.html">563</a></td><td>style</td><td>Variable &apos;NewJ&apos; is assigned a value that is never used.</td></tr>
+         <tr class="knownConditionTrueFalse sev_style issue"><td><a href="15.html#line-386">386</a></td><td>knownConditionTrueFalse</td><td><a href="https://cwe.mitre.org/data/definitions/571.html">571</a></td><td>style</td><td>Condition &apos;figurine!=nullptr&apos; is always true</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="15.html#line-839">839</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;playingBoard&apos; should be passed by const reference.</td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="15.html#line-855">855</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;f&apos; can be declared as pointer to const</td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="15.html#line-872">872</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;f&apos; can be declared as pointer to const</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-908">908</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;drawTable&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-939">939</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setPlayer2&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-943">943</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setPlayer1&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-959">959</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getGameScene&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-961">961</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setGameScene&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-969">969</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setDifficulty&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-971">971</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getNotification&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="15.html#line-973">973</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setNotification&apos; is never used.</td></tr>
+         <tr class="constParameterPointer sev_style issue"><td><a href="15.html#line-978">978</a></td><td>constParameterPointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Parameter &apos;board&apos; can be declared as pointer to const</td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="15.html#line-984">984</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;f&apos; can be declared as pointer to const</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="16.html">Sources/gamescene.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;thread&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="16.html#line-10">10</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="17.html">Sources/main.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="17.html#line-1">1</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QApplication&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="17.html#line-2">2</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QDesktopWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="17.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QStyle&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="18.html">Sources/mainwindow.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="18.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="19.html">Sources/player.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="19.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="19.html#line-7">7</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getPlayerTable&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="19.html#line-9">9</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getPlayerField&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="19.html#line-14">14</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setPlayerTable&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="19.html#line-18">18</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setPlayerType&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="19.html#line-29">29</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;getCurrentSelectedFigurine&apos; is never used.</td></tr>
+         <tr class="unusedFunction sev_style issue"><td><a href="19.html#line-34">34</a></td><td>unusedFunction</td><td><a href="https://cwe.mitre.org/data/definitions/561.html">561</a></td><td>style</td><td>The function &apos;setCurrentSelectedFigurine&apos; is never used.</td></tr>
+         <tr class="passedByValue sev_performance issue"><td><a href="19.html#line-39">39</a></td><td>passedByValue</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>performance</td><td>Function parameter &apos;playerFields&apos; should be passed by const reference.</td></tr>
+         <tr class="constVariablePointer sev_style issue"><td><a href="19.html#line-48">48</a></td><td>constVariablePointer</td><td><a href="https://cwe.mitre.org/data/definitions/398.html">398</a></td><td>style</td><td>Variable &apos;currentFigurine&apos; can be declared as pointer to const</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="20.html">Sources/tablefigurinescene.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="20.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      <tbody class="fileEntry">
+       <tr><td colspan="5"><a href="21.html">Sources/tablesetupscene.cpp</a></td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-3">3</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-4">4</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-5">5</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-6">6</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-7">7</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-8">8</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+         <tr class="missingIncludeSystem sev_information issue"><td><a href="21.html#line-9">9</a></td><td>missingIncludeSystem</td><td></td><td>information</td><td>Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</td></tr>
+      </tbody>
+       </table>
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Created by Cppcheck 2.11 (<a href="https://cppcheck.sourceforge.io">Sourceforge</a>, <a href="irc://irc.freenode.net/cppcheck">IRC</a>)
+      </p>
+    </div>
+    </div>
+  </body>
+</html>

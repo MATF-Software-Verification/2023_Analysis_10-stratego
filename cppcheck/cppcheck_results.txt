@@ -1,0 +1,540 @@
+[1mHeaders/board.h:4:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mHeaders/field.h:5:0: [31minformation:[39m Include file: <QGraphicsItem> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsItem>
+^
+[1mHeaders/field.h:6:0: [31minformation:[39m Include file: <QPen> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPen>
+^
+[1mHeaders/field.h:7:0: [31minformation:[39m Include file: <QPointF> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPointF>
+^
+[1mHeaders/field.h:8:0: [31minformation:[39m Include file: <QRectF> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QRectF>
+^
+[1mHeaders/field.h:9:0: [31minformation:[39m Include file: <QWidget> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QWidget>
+^
+[1mHeaders/figurine.h:4:0: [31minformation:[39m Include file: <QGraphicsItem> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsItem>
+^
+[1mHeaders/figurine.h:5:0: [31minformation:[39m Include file: <QPainter> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPainter>
+^
+[1mHeaders/figurine.h:6:0: [31minformation:[39m Include file: <QRectF> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QRectF>
+^
+[1mHeaders/figurine.h:7:0: [31minformation:[39m Include file: <QString> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QString>
+^
+[1mHeaders/figurine.h:8:0: [31minformation:[39m Include file: <QWidget> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QWidget>
+^
+[1mHeaders/figurine.h:9:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/board.cpp:3:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/board.cpp:116:8: [31mwarning:[39m Member variable 'Board::firstRowFree' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board()
+       ^
+[1mSources/board.cpp:116:8: [31mwarning:[39m Member variable 'Board::allFigurinesSet' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board()
+       ^
+[1mSources/board.cpp:116:8: [31mwarning:[39m Member variable 'Board::bombsNotBlockingWay' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board()
+       ^
+[1mSources/board.cpp:152:8: [31mwarning:[39m Member variable 'Board::m_pboard' is not initialized in the copy constructor. [uninitMemberVar][0m
+Board::Board(Board &other)
+       ^
+[1mSources/board.cpp:165:8: [31mwarning:[39m Member variable 'Board::m_pboard' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board(State newBoard)
+       ^
+[1mSources/board.cpp:165:8: [31mwarning:[39m Member variable 'Board::firstRowFree' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board(State newBoard)
+       ^
+[1mSources/board.cpp:165:8: [31mwarning:[39m Member variable 'Board::allFigurinesSet' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board(State newBoard)
+       ^
+[1mSources/board.cpp:165:8: [31mwarning:[39m Member variable 'Board::bombsNotBlockingWay' is not initialized in the constructor. [uninitMemberVar][0m
+Board::Board(State newBoard)
+       ^
+[1mSources/board.cpp:118:3: [31mwarning:[39m Class 'Board' does not have a operator= which is recommended since it has dynamic memory/resource allocation(s). [noOperatorEq][0m
+  m_pboard = new std::vector<std::vector<Field *>>();
+  ^
+[1mHeaders/field.h:29:3: [31mstyle:[39m Class 'Field' has a constructor with 1 argument that is not explicit. [noExplicitConstructor][0m
+  Field(FieldType ft);
+  ^
+[1mHeaders/board.h:24:3: [31mstyle:[39m Class 'Board' has a constructor with 1 argument that is not explicit. [noExplicitConstructor][0m
+  Board(State);
+  ^
+[1mSources/board.cpp:53:42: [31mperformance:[39m Function parameter 'state' should be passed by const reference. [passedByValue][0m
+void Board::setField(int i, int j, State state)
+                                         ^
+[1mSources/board.cpp:165:20: [31mperformance:[39m Function parameter 'newBoard' should be passed by const reference. [passedByValue][0m
+Board::Board(State newBoard)
+                   ^
+[1mSources/board.cpp:22:14: [31mstyle:[39m Variable 'f' can be declared as pointer to const [constVariablePointer][0m
+      Field *f = ((*m_pboard)[i][j]);
+             ^
+[1mSources/board.cpp:99:15: [31mstyle:[39m Variable 'f' can be declared as pointer to const [constVariablePointer][0m
+    Figurine *f = (*m_pboard)[6][i]->getFigurine();
+              ^
+[1mHeaders/dialog.h:4:0: [31minformation:[39m Include file: <QDialog> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QDialog>
+^
+[1mHeaders/dialog.h:5:0: [31minformation:[39m Include file: <QMediaPlayer> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMediaPlayer>
+^
+[1mHeaders/dialog.h:7:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mHeaders/mainwindow.h:4:0: [31minformation:[39m Include file: <stdlib.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <stdlib.h>
+^
+[1mHeaders/mainwindow.h:5:0: [31minformation:[39m Include file: <time.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <time.h>
+^
+[1mHeaders/mainwindow.h:7:0: [31minformation:[39m Include file: <QColor> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QColor>
+^
+[1mHeaders/mainwindow.h:8:0: [31minformation:[39m Include file: <QGraphicsItem> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsItem>
+^
+[1mHeaders/mainwindow.h:9:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mHeaders/mainwindow.h:10:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mHeaders/mainwindow.h:11:0: [31minformation:[39m Include file: <QGridLayout> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGridLayout>
+^
+[1mHeaders/mainwindow.h:12:0: [31minformation:[39m Include file: <QLabel> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QLabel>
+^
+[1mHeaders/mainwindow.h:13:0: [31minformation:[39m Include file: <QListWidget> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QListWidget>
+^
+[1mHeaders/mainwindow.h:14:0: [31minformation:[39m Include file: <QListWidgetItem> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QListWidgetItem>
+^
+[1mHeaders/mainwindow.h:15:0: [31minformation:[39m Include file: <QMainWindow> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMainWindow>
+^
+[1mHeaders/mainwindow.h:16:0: [31minformation:[39m Include file: <QMediaPlayer> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMediaPlayer>
+^
+[1mHeaders/mainwindow.h:17:0: [31minformation:[39m Include file: <QMediaPlaylist> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMediaPlaylist>
+^
+[1mHeaders/mainwindow.h:18:0: [31minformation:[39m Include file: <QMessageBox> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMessageBox>
+^
+[1mHeaders/mainwindow.h:19:0: [31minformation:[39m Include file: <QPainter> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPainter>
+^
+[1mHeaders/mainwindow.h:20:0: [31minformation:[39m Include file: <QPushButton> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPushButton>
+^
+[1mHeaders/mainwindow.h:21:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mHeaders/mainwindow.h:22:0: [31minformation:[39m Include file: <set> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <set>
+^
+[1mHeaders/game.h:4:0: [31minformation:[39m Include file: <stdlib.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <stdlib.h>
+^
+[1mHeaders/game.h:5:0: [31minformation:[39m Include file: <time.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <time.h>
+^
+[1mHeaders/game.h:7:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mHeaders/game.h:8:0: [31minformation:[39m Include file: <QLabel> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QLabel>
+^
+[1mHeaders/game.h:9:0: [31minformation:[39m Include file: <QMessageBox> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMessageBox>
+^
+[1mHeaders/game.h:10:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mHeaders/game.h:11:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mHeaders/gamescene.h:4:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mHeaders/gamescene.h:5:0: [31minformation:[39m Include file: <QGraphicsSceneMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsSceneMouseEvent>
+^
+[1mHeaders/gamescene.h:6:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mHeaders/gamescene.h:7:0: [31minformation:[39m Include file: <QMediaPlayer> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMediaPlayer>
+^
+[1mHeaders/gamescene.h:8:0: [31minformation:[39m Include file: <QMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMouseEvent>
+^
+[1mHeaders/gamescene.h:9:0: [31minformation:[39m Include file: <QPoint> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPoint>
+^
+[1mHeaders/gamescene.h:10:0: [31minformation:[39m Include file: <QSound> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QSound>
+^
+[1mHeaders/gamescene.h:11:0: [31minformation:[39m Include file: <QSoundEffect> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QSoundEffect>
+^
+[1mHeaders/gamescene.h:12:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mHeaders/player.h:4:0: [31minformation:[39m Include file: <cmath> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <cmath>
+^
+[1mHeaders/player.h:5:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mHeaders/musicthread.h:4:0: [31minformation:[39m Include file: <QMediaPlayer> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMediaPlayer>
+^
+[1mHeaders/musicthread.h:5:0: [31minformation:[39m Include file: <QString> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QString>
+^
+[1mHeaders/musicthread.h:6:0: [31minformation:[39m Include file: <QThread> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QThread>
+^
+[1mHeaders/musicthread.h:7:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mHeaders/tablefigurinescene.h:4:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mHeaders/tablefigurinescene.h:5:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mHeaders/tablefigurinescene.h:6:0: [31minformation:[39m Include file: <QMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMouseEvent>
+^
+[1mHeaders/tablefigurinescene.h:7:0: [31minformation:[39m Include file: <QPoint> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPoint>
+^
+[1mHeaders/tablefigurinescene.h:8:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mHeaders/tablesetupscene.h:4:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mHeaders/tablesetupscene.h:5:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mHeaders/tablesetupscene.h:6:0: [31minformation:[39m Include file: <QMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMouseEvent>
+^
+[1mHeaders/tablesetupscene.h:7:0: [31minformation:[39m Include file: <QPoint> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPoint>
+^
+[1mHeaders/tablesetupscene.h:8:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mSources/dialog.cpp:3:0: [31minformation:[39m Include file: <QTime> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QTime>
+^
+[1mHeaders/musicthread.h:33:9: [31merror:[39m There is an unknown macro here somewhere. Configuration is required. If slots is a macro then please configure it. [unknownMacro][0m
+ public slots:
+        ^
+[1mSources/field.cpp:20:3: [31mperformance:[39m Variable 'm_fig' is assigned in constructor body. Consider performing initialization in initialization list. [useInitializationList][0m
+  m_fig = Figurine();
+  ^
+[1mSources/field.cpp:34:3: [31mperformance:[39m Variable 'm_fig' is assigned in constructor body. Consider performing initialization in initialization list. [useInitializationList][0m
+  m_fig = Figurine();
+  ^
+[1mSources/field.cpp:151:15: [31mstyle:[39m Local variable 'padding' shadows outer variable [shadowVariable][0m
+        float padding = getWidth() / 10;
+              ^
+[1mSources/field.cpp:91:7: [2mnote:[0m Shadowed declaration
+  int padding = 5;
+      ^
+[1mSources/field.cpp:151:15: [2mnote:[0m Shadow variable
+        float padding = getWidth() / 10;
+              ^
+[1mSources/field.cpp:188:30: [31mperformance:[39m Function parameter 'other' should be passed by const reference. [passedByValue][0m
+Field Field::operator=(Field other) { return Field(other); }
+                             ^
+[1mSources/field.cpp:231:29: [31mperformance:[39m Function parameter 'fig' should be passed by const reference. [passedByValue][0m
+void Field::setFig(Figurine fig) { m_fig = fig; }
+                            ^
+[1mSources/figurine.cpp:3:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mSources/figurine.cpp:4:0: [31minformation:[39m Include file: <QPen> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPen>
+^
+[1mSources/figurine.cpp:5:0: [31minformation:[39m Include file: <QPixmap> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPixmap>
+^
+[1mSources/figurine.cpp:6:0: [31minformation:[39m Include file: <QPointF> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPointF>
+^
+[1mSources/figurine.cpp:7:0: [31minformation:[39m Include file: <QString> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QString>
+^
+[1mSources/figurine.cpp:94:39: [31mperformance:[39m Function parameter 'other' should be passed by const reference. [passedByValue][0m
+Figurine Figurine::operator=(Figurine other) { return Figurine(other); }
+                                      ^
+[1mSources/game.cpp:27:7: [31mwarning:[39m Member variable 'Game::m_notification' is not initialized in the constructor. [uninitMemberVar][0m
+Game::Game(Player *player1, Player *player2, Board *board, GameScene *gameScene,
+      ^
+[1mSources/game.cpp:27:7: [31mwarning:[39m Member variable 'Game::m_difficulty' is not initialized in the constructor. [uninitMemberVar][0m
+Game::Game(Player *player1, Player *player2, Board *board, GameScene *gameScene,
+      ^
+[1mSources/game.cpp:39:7: [31mwarning:[39m Member variable 'Game::m_msg' is not initialized in the constructor. [uninitMemberVar][0m
+Game::Game()
+      ^
+[1mSources/game.cpp:39:7: [31mwarning:[39m Member variable 'Game::m_notification' is not initialized in the constructor. [uninitMemberVar][0m
+Game::Game()
+      ^
+[1mSources/game.cpp:39:7: [31mwarning:[39m Member variable 'Game::m_difficulty' is not initialized in the constructor. [uninitMemberVar][0m
+Game::Game()
+      ^
+[1mHeaders/player.h:20:3: [31mstyle:[39m Class 'Player' has a constructor with 1 argument that is not explicit. [noExplicitConstructor][0m
+  Player(PlayerType p);
+  ^
+[1mSources/game.cpp:386:22: [31mstyle:[39m Condition 'figurine!=nullptr' is always true [knownConditionTrueFalse][0m
+        if (figurine != nullptr)
+                     ^
+[1mSources/game.cpp:160:7: [31mstyle:[39m The scope of the variable 'OldI' can be reduced. [variableScope][0m
+  int OldI = -1;
+      ^
+[1mSources/game.cpp:161:7: [31mstyle:[39m The scope of the variable 'OldJ' can be reduced. [variableScope][0m
+  int OldJ = -1;
+      ^
+[1mSources/game.cpp:162:7: [31mstyle:[39m The scope of the variable 'NewI' can be reduced. [variableScope][0m
+  int NewI = -1;
+      ^
+[1mSources/game.cpp:163:7: [31mstyle:[39m The scope of the variable 'NewJ' can be reduced. [variableScope][0m
+  int NewJ = -1;
+      ^
+[1mSources/game.cpp:230:7: [31mstyle:[39m The scope of the variable 'OldI' can be reduced. [variableScope][0m
+  int OldI = -1;
+      ^
+[1mSources/game.cpp:231:7: [31mstyle:[39m The scope of the variable 'OldJ' can be reduced. [variableScope][0m
+  int OldJ = -1;
+      ^
+[1mSources/game.cpp:232:7: [31mstyle:[39m The scope of the variable 'NewI' can be reduced. [variableScope][0m
+  int NewI = -1;
+      ^
+[1mSources/game.cpp:233:7: [31mstyle:[39m The scope of the variable 'NewJ' can be reduced. [variableScope][0m
+  int NewJ = -1;
+      ^
+[1mSources/game.cpp:839:32: [31mperformance:[39m Function parameter 'playingBoard' should be passed by const reference. [passedByValue][0m
+auto Game::evaluateBoard(State playingBoard) const -> int
+                               ^
+[1mSources/game.cpp:13:17: [31mstyle:[39m Variable 'f' can be declared as pointer to const [constVariablePointer][0m
+      Figurine *f = state[i][j].getFigurine();
+                ^
+[1mSources/game.cpp:855:17: [31mstyle:[39m Variable 'f' can be declared as pointer to const [constVariablePointer][0m
+      Figurine *f = playingBoard[i][j].getFigurine();
+                ^
+[1mSources/game.cpp:872:17: [31mstyle:[39m Variable 'f' can be declared as pointer to const [constVariablePointer][0m
+      Figurine *f = playingBoard[i][j].getFigurine();
+                ^
+[1mSources/game.cpp:978:59: [31mstyle:[39m Parameter 'board' can be declared as pointer to const [constParameterPointer][0m
+auto Game::checkNoMoreMoves(PlayerType playerType, Board *board) -> bool
+                                                          ^
+[1mSources/game.cpp:984:17: [31mstyle:[39m Variable 'f' can be declared as pointer to const [constVariablePointer][0m
+      Figurine *f = (*board->getPboard())[i][j]->getFigurine();
+                ^
+[1mSources/game.cpp:160:12: [31mstyle:[39m Variable 'OldI' is assigned a value that is never used. [unreadVariable][0m
+  int OldI = -1;
+           ^
+[1mSources/game.cpp:161:12: [31mstyle:[39m Variable 'OldJ' is assigned a value that is never used. [unreadVariable][0m
+  int OldJ = -1;
+           ^
+[1mSources/game.cpp:162:12: [31mstyle:[39m Variable 'NewI' is assigned a value that is never used. [unreadVariable][0m
+  int NewI = -1;
+           ^
+[1mSources/game.cpp:163:12: [31mstyle:[39m Variable 'NewJ' is assigned a value that is never used. [unreadVariable][0m
+  int NewJ = -1;
+           ^
+[1mSources/game.cpp:230:12: [31mstyle:[39m Variable 'OldI' is assigned a value that is never used. [unreadVariable][0m
+  int OldI = -1;
+           ^
+[1mSources/game.cpp:231:12: [31mstyle:[39m Variable 'OldJ' is assigned a value that is never used. [unreadVariable][0m
+  int OldJ = -1;
+           ^
+[1mSources/game.cpp:232:12: [31mstyle:[39m Variable 'NewI' is assigned a value that is never used. [unreadVariable][0m
+  int NewI = -1;
+           ^
+[1mSources/game.cpp:233:12: [31mstyle:[39m Variable 'NewJ' is assigned a value that is never used. [unreadVariable][0m
+  int NewJ = -1;
+           ^
+[1mSources/gamescene.cpp:3:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mSources/gamescene.cpp:4:0: [31minformation:[39m Include file: <QGraphicsSceneMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsSceneMouseEvent>
+^
+[1mSources/gamescene.cpp:5:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mSources/gamescene.cpp:6:0: [31minformation:[39m Include file: <QMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMouseEvent>
+^
+[1mSources/gamescene.cpp:7:0: [31minformation:[39m Include file: <QPoint> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPoint>
+^
+[1mSources/gamescene.cpp:8:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/gamescene.cpp:9:0: [31minformation:[39m Include file: <thread> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <thread>
+^
+[1mSources/gamescene.cpp:10:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mSources/main.cpp:1:0: [31minformation:[39m Include file: <QApplication> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QApplication>
+^
+[1mSources/main.cpp:2:0: [31minformation:[39m Include file: <QDesktopWidget> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QDesktopWidget>
+^
+[1mSources/main.cpp:3:0: [31minformation:[39m Include file: <QStyle> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QStyle>
+^
+[1mSources/mainwindow.cpp:3:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/player.cpp:3:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/player.cpp:39:50: [31mperformance:[39m Function parameter 'playerFields' should be passed by const reference. [passedByValue][0m
+std::pair<int, bool> Player::evaluateTable(State playerFields)
+                                                 ^
+[1mSources/player.cpp:48:17: [31mstyle:[39m Variable 'currentFigurine' can be declared as pointer to const [constVariablePointer][0m
+      Figurine *currentFigurine = playerFields[i][j].getFigurine();
+                ^
+[1mSources/tablefigurinescene.cpp:3:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mSources/tablefigurinescene.cpp:4:0: [31minformation:[39m Include file: <QGraphicsSceneMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsSceneMouseEvent>
+^
+[1mSources/tablefigurinescene.cpp:5:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mSources/tablefigurinescene.cpp:6:0: [31minformation:[39m Include file: <QMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMouseEvent>
+^
+[1mSources/tablefigurinescene.cpp:7:0: [31minformation:[39m Include file: <QPoint> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPoint>
+^
+[1mSources/tablefigurinescene.cpp:8:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/tablefigurinescene.cpp:9:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mSources/tablesetupscene.cpp:3:0: [31minformation:[39m Include file: <QGraphicsScene> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsScene>
+^
+[1mSources/tablesetupscene.cpp:4:0: [31minformation:[39m Include file: <QGraphicsSceneMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsSceneMouseEvent>
+^
+[1mSources/tablesetupscene.cpp:5:0: [31minformation:[39m Include file: <QGraphicsView> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QGraphicsView>
+^
+[1mSources/tablesetupscene.cpp:6:0: [31minformation:[39m Include file: <QMouseEvent> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QMouseEvent>
+^
+[1mSources/tablesetupscene.cpp:7:0: [31minformation:[39m Include file: <QPoint> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <QPoint>
+^
+[1mSources/tablesetupscene.cpp:8:0: [31minformation:[39m Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <iostream>
+^
+[1mSources/tablesetupscene.cpp:9:0: [31minformation:[39m Include file: <vector> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem][0m
+#include <vector>
+^
+[1mSources/board.cpp:7:0: [31mstyle:[39m The function 'setBoard' is never used. [unusedFunction][0m
+void Board::setBoard(const State &board) { m_board = board; }
+^
+[1mSources/board.cpp:11:0: [31mstyle:[39m The function 'setPboard' is never used. [unusedFunction][0m
+void Board::setPboard(const pState &pboard) { m_pboard = pboard; }
+^
+[1mSources/board.cpp:53:0: [31mstyle:[39m The function 'setField' is never used. [unusedFunction][0m
+void Board::setField(int i, int j, State state)
+^
+[1mSources/board.cpp:65:0: [31mstyle:[39m The function 'checkPlayerSetup' is never used. [unusedFunction][0m
+bool Board::checkPlayerSetup()
+^
+[1mSources/board.cpp:110:0: [31mstyle:[39m The function 'getFirstRowFree' is never used. [unusedFunction][0m
+bool Board::getFirstRowFree() const { return firstRowFree; }
+^
+[1mSources/board.cpp:112:0: [31mstyle:[39m The function 'getAllFigurinesSet' is never used. [unusedFunction][0m
+bool Board::getAllFigurinesSet() const { return allFigurinesSet; }
+^
+[1mSources/board.cpp:114:0: [31mstyle:[39m The function 'getBombsNotBlockingWay' is never used. [unusedFunction][0m
+bool Board::getBombsNotBlockingWay() const { return bombsNotBlockingWay; }
+^
+[1mSources/field.cpp:85:0: [31mstyle:[39m The function 'paint' is never used. [unusedFunction][0m
+void Field::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+^
+[1mSources/field.cpp:231:0: [31mstyle:[39m The function 'setFig' is never used. [unusedFunction][0m
+void Field::setFig(Figurine fig) { m_fig = fig; }
+^
+[1mSources/figurine.cpp:322:0: [31mstyle:[39m The function 'whereCanMove' is never used. [unusedFunction][0m
+void Figurine::whereCanMove(int x, int y, Board *board)
+^
+[1mSources/figurine.cpp:590:0: [31mstyle:[39m The function 'getCrossed' is never used. [unusedFunction][0m
+bool Figurine::getCrossed() const { return m_crossed; }
+^
+[1mSources/game.cpp:59:0: [31mstyle:[39m The function 'playGame' is never used. [unusedFunction][0m
+void Game::playGame()
+^
+[1mSources/game.cpp:908:0: [31mstyle:[39m The function 'drawTable' is never used. [unusedFunction][0m
+void Game::drawTable(Board *board, bool firstTime)
+^
+[1mSources/game.cpp:939:0: [31mstyle:[39m The function 'setPlayer2' is never used. [unusedFunction][0m
+void Game::setPlayer2(Player *player2) { m_player2 = player2; }
+^
+[1mSources/game.cpp:943:0: [31mstyle:[39m The function 'setPlayer1' is never used. [unusedFunction][0m
+void Game::setPlayer1(Player *player1) { m_player1 = player1; }
+^
+[1mSources/game.cpp:959:0: [31mstyle:[39m The function 'getGameScene' is never used. [unusedFunction][0m
+auto Game::getGameScene() -> GameScene * { return m_gameScene; }
+^
+[1mSources/game.cpp:961:0: [31mstyle:[39m The function 'setGameScene' is never used. [unusedFunction][0m
+void Game::setGameScene(GameScene *gameScene) { m_gameScene = gameScene; }
+^
+[1mSources/game.cpp:969:0: [31mstyle:[39m The function 'setDifficulty' is never used. [unusedFunction][0m
+void Game::setDifficulty(int difficulty) { m_difficulty = difficulty; }
+^
+[1mSources/game.cpp:971:0: [31mstyle:[39m The function 'getNotification' is never used. [unusedFunction][0m
+auto Game::getNotification() const -> QLabel * { return m_notification; }
+^
+[1mSources/game.cpp:973:0: [31mstyle:[39m The function 'setNotification' is never used. [unusedFunction][0m
+void Game::setNotification(QLabel *notification)
+^
+[1mSources/player.cpp:7:0: [31mstyle:[39m The function 'getPlayerTable' is never used. [unusedFunction][0m
+Board *Player::getPlayerTable() { return m_playerTable; }
+^
+[1mSources/player.cpp:9:0: [31mstyle:[39m The function 'getPlayerField' is never used. [unusedFunction][0m
+Field *Player::getPlayerField(int i, int j)
+^
+[1mSources/player.cpp:14:0: [31mstyle:[39m The function 'setPlayerTable' is never used. [unusedFunction][0m
+void Player::setPlayerTable(Board *playerTable) { m_playerTable = playerTable; }
+^
+[1mSources/player.cpp:18:0: [31mstyle:[39m The function 'setPlayerType' is never used. [unusedFunction][0m
+void Player::setPlayerType(const PlayerType &playerType)
+^
+[1mSources/player.cpp:29:0: [31mstyle:[39m The function 'getCurrentSelectedFigurine' is never used. [unusedFunction][0m
+Figurine *Player::getCurrentSelectedFigurine() const
+^
+[1mSources/player.cpp:34:0: [31mstyle:[39m The function 'setCurrentSelectedFigurine' is never used. [unusedFunction][0m
+void Player::setCurrentSelectedFigurine(Figurine *currentSelectedFigurine)
+^

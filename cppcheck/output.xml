@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="2.11"/>
+    <errors>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/board.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/field.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPen&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPen&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/field.h" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPointF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPointF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/field.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QRectF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QRectF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/field.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/field.h" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/figurine.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPainter&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPainter&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/figurine.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QRectF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QRectF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/figurine.h" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/figurine.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/figurine.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/figurine.h" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/board.cpp" line="3" column="0"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::firstRowFree&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::firstRowFree&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="116" column="8"/>
+            <symbol>Board::firstRowFree</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::allFigurinesSet&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::allFigurinesSet&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="116" column="8"/>
+            <symbol>Board::allFigurinesSet</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::bombsNotBlockingWay&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::bombsNotBlockingWay&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="116" column="8"/>
+            <symbol>Board::bombsNotBlockingWay</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::m_pboard&apos; is not initialized in the copy constructor." verbose="Member variable &apos;Board::m_pboard&apos; is not initialized in the copy constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="152" column="8"/>
+            <symbol>Board::m_pboard</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::m_pboard&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::m_pboard&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="165" column="8"/>
+            <symbol>Board::m_pboard</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::firstRowFree&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::firstRowFree&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="165" column="8"/>
+            <symbol>Board::firstRowFree</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::allFigurinesSet&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::allFigurinesSet&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="165" column="8"/>
+            <symbol>Board::allFigurinesSet</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Board::bombsNotBlockingWay&apos; is not initialized in the constructor." verbose="Member variable &apos;Board::bombsNotBlockingWay&apos; is not initialized in the constructor." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="165" column="8"/>
+            <symbol>Board::bombsNotBlockingWay</symbol>
+        </error>
+        <error id="noOperatorEq" severity="warning" msg="Class &apos;Board&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &apos;Board&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="118" column="3"/>
+            <symbol>Board</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Field&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Field&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="Sources/board.cpp">
+            <location file="Headers/field.h" line="29" column="3"/>
+            <symbol>Field</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Board&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Board&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="Sources/board.cpp">
+            <location file="Headers/board.h" line="24" column="3"/>
+            <symbol>Board</symbol>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;state&apos; should be passed by const reference." verbose="Parameter &apos;state&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="53" column="42"/>
+            <symbol>state</symbol>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;newBoard&apos; should be passed by const reference." verbose="Parameter &apos;newBoard&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="165" column="20"/>
+            <symbol>newBoard</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;f&apos; can be declared as pointer to const" verbose="Variable &apos;f&apos; can be declared as pointer to const" cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="22" column="14" info="Variable &apos;f&apos; can be declared as pointer to const"/>
+            <symbol>f</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;f&apos; can be declared as pointer to const" verbose="Variable &apos;f&apos; can be declared as pointer to const" cwe="398" file0="Sources/board.cpp">
+            <location file="Sources/board.cpp" line="99" column="15" info="Variable &apos;f&apos; can be declared as pointer to const"/>
+            <symbol>f</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QDialog&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QDialog&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/dialog.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/dialog.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/dialog.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;stdlib.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;stdlib.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;time.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;time.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QColor&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QColor&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="10" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGridLayout&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGridLayout&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="11" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QLabel&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QLabel&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="12" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QListWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QListWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="13" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QListWidgetItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QListWidgetItem&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="14" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMainWindow&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMainWindow&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="15" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="16" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMediaPlaylist&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMediaPlaylist&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="17" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMessageBox&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMessageBox&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="18" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPainter&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPainter&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="19" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPushButton&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPushButton&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="20" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="21" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;set&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;set&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/mainwindow.h" line="22" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;stdlib.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;stdlib.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;time.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;time.h&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QLabel&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QLabel&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMessageBox&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMessageBox&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="10" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/game.h" line="11" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QSound&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QSound&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="10" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QSoundEffect&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QSoundEffect&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="11" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/gamescene.h" line="12" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;cmath&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;cmath&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/player.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/player.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMediaPlayer&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/musicthread.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/musicthread.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QThread&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QThread&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/musicthread.h" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/musicthread.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablefigurinescene.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablefigurinescene.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablefigurinescene.h" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablefigurinescene.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablefigurinescene.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablesetupscene.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablesetupscene.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablesetupscene.h" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablesetupscene.h" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Headers/tablesetupscene.h" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QTime&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QTime&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/dialog.cpp" line="3" column="0"/>
+        </error>
+        <error id="unknownMacro" severity="error" msg="There is an unknown macro here somewhere. Configuration is required. If slots is a macro then please configure it." verbose="There is an unknown macro here somewhere. Configuration is required. If slots is a macro then please configure it." file0="Sources/dialog.cpp">
+            <location file="Headers/musicthread.h" line="33" column="9"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;m_fig&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;m_fig&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="Sources/field.cpp">
+            <location file="Sources/field.cpp" line="20" column="3"/>
+            <symbol>m_fig</symbol>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;m_fig&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;m_fig&apos; a value by passing the value to the constructor in the initialization list." cwe="398" file0="Sources/field.cpp">
+            <location file="Sources/field.cpp" line="34" column="3"/>
+            <symbol>m_fig</symbol>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &apos;padding&apos; shadows outer variable" verbose="Local variable &apos;padding&apos; shadows outer variable" cwe="398" file0="Sources/field.cpp">
+            <location file="Sources/field.cpp" line="151" column="15" info="Shadow variable"/>
+            <location file="Sources/field.cpp" line="91" column="7" info="Shadowed declaration"/>
+            <symbol>padding</symbol>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;other&apos; should be passed by const reference." verbose="Parameter &apos;other&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/field.cpp">
+            <location file="Sources/field.cpp" line="188" column="30"/>
+            <symbol>other</symbol>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;fig&apos; should be passed by const reference." verbose="Parameter &apos;fig&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/field.cpp">
+            <location file="Sources/field.cpp" line="231" column="29"/>
+            <symbol>fig</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/figurine.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPen&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPen&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/figurine.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPixmap&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPixmap&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/figurine.cpp" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPointF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPointF&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/figurine.cpp" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QString&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/figurine.cpp" line="7" column="0"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;other&apos; should be passed by const reference." verbose="Parameter &apos;other&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/figurine.cpp">
+            <location file="Sources/figurine.cpp" line="94" column="39"/>
+            <symbol>other</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Game::m_notification&apos; is not initialized in the constructor." verbose="Member variable &apos;Game::m_notification&apos; is not initialized in the constructor." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="27" column="7"/>
+            <symbol>Game::m_notification</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Game::m_difficulty&apos; is not initialized in the constructor." verbose="Member variable &apos;Game::m_difficulty&apos; is not initialized in the constructor." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="27" column="7"/>
+            <symbol>Game::m_difficulty</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Game::m_msg&apos; is not initialized in the constructor." verbose="Member variable &apos;Game::m_msg&apos; is not initialized in the constructor." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="39" column="7"/>
+            <symbol>Game::m_msg</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Game::m_notification&apos; is not initialized in the constructor." verbose="Member variable &apos;Game::m_notification&apos; is not initialized in the constructor." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="39" column="7"/>
+            <symbol>Game::m_notification</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Game::m_difficulty&apos; is not initialized in the constructor." verbose="Member variable &apos;Game::m_difficulty&apos; is not initialized in the constructor." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="39" column="7"/>
+            <symbol>Game::m_difficulty</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Player&apos; has a constructor with 1 argument that is not explicit." verbose="Class &apos;Player&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="Sources/game.cpp">
+            <location file="Headers/player.h" line="20" column="3"/>
+            <symbol>Player</symbol>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;figurine!=nullptr&apos; is always true" verbose="Condition &apos;figurine!=nullptr&apos; is always true" cwe="571" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="386" column="22" info="Condition &apos;figurine!=nullptr&apos; is always true"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;OldI&apos; can be reduced." verbose="The scope of the variable &apos;OldI&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="160" column="7"/>
+            <symbol>OldI</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;OldJ&apos; can be reduced." verbose="The scope of the variable &apos;OldJ&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="161" column="7"/>
+            <symbol>OldJ</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;NewI&apos; can be reduced." verbose="The scope of the variable &apos;NewI&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="162" column="7"/>
+            <symbol>NewI</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;NewJ&apos; can be reduced." verbose="The scope of the variable &apos;NewJ&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="163" column="7"/>
+            <symbol>NewJ</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;OldI&apos; can be reduced." verbose="The scope of the variable &apos;OldI&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="230" column="7"/>
+            <symbol>OldI</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;OldJ&apos; can be reduced." verbose="The scope of the variable &apos;OldJ&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="231" column="7"/>
+            <symbol>OldJ</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;NewI&apos; can be reduced." verbose="The scope of the variable &apos;NewI&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="232" column="7"/>
+            <symbol>NewI</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;NewJ&apos; can be reduced." verbose="The scope of the variable &apos;NewJ&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="233" column="7"/>
+            <symbol>NewJ</symbol>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;playingBoard&apos; should be passed by const reference." verbose="Parameter &apos;playingBoard&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="839" column="32"/>
+            <symbol>playingBoard</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;f&apos; can be declared as pointer to const" verbose="Variable &apos;f&apos; can be declared as pointer to const" cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="13" column="17" info="Variable &apos;f&apos; can be declared as pointer to const"/>
+            <symbol>f</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;f&apos; can be declared as pointer to const" verbose="Variable &apos;f&apos; can be declared as pointer to const" cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="855" column="17" info="Variable &apos;f&apos; can be declared as pointer to const"/>
+            <symbol>f</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;f&apos; can be declared as pointer to const" verbose="Variable &apos;f&apos; can be declared as pointer to const" cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="872" column="17" info="Variable &apos;f&apos; can be declared as pointer to const"/>
+            <symbol>f</symbol>
+        </error>
+        <error id="constParameterPointer" severity="style" msg="Parameter &apos;board&apos; can be declared as pointer to const" verbose="Parameter &apos;board&apos; can be declared as pointer to const" cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="978" column="59" info="Parameter &apos;board&apos; can be declared as pointer to const"/>
+            <symbol>board</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;f&apos; can be declared as pointer to const" verbose="Variable &apos;f&apos; can be declared as pointer to const" cwe="398" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="984" column="17" info="Variable &apos;f&apos; can be declared as pointer to const"/>
+            <symbol>f</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;OldI&apos; is assigned a value that is never used." verbose="Variable &apos;OldI&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="160" column="12"/>
+            <symbol>OldI</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;OldJ&apos; is assigned a value that is never used." verbose="Variable &apos;OldJ&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="161" column="12"/>
+            <symbol>OldJ</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;NewI&apos; is assigned a value that is never used." verbose="Variable &apos;NewI&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="162" column="12"/>
+            <symbol>NewI</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;NewJ&apos; is assigned a value that is never used." verbose="Variable &apos;NewJ&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="163" column="12"/>
+            <symbol>NewJ</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;OldI&apos; is assigned a value that is never used." verbose="Variable &apos;OldI&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="230" column="12"/>
+            <symbol>OldI</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;OldJ&apos; is assigned a value that is never used." verbose="Variable &apos;OldJ&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="231" column="12"/>
+            <symbol>OldJ</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;NewI&apos; is assigned a value that is never used." verbose="Variable &apos;NewI&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="232" column="12"/>
+            <symbol>NewI</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;NewJ&apos; is assigned a value that is never used." verbose="Variable &apos;NewJ&apos; is assigned a value that is never used." cwe="563" file0="Sources/game.cpp">
+            <location file="Sources/game.cpp" line="233" column="12"/>
+            <symbol>NewJ</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;thread&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;thread&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/gamescene.cpp" line="10" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QApplication&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QApplication&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/main.cpp" line="1" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QDesktopWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QDesktopWidget&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/main.cpp" line="2" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QStyle&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QStyle&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/main.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/mainwindow.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/player.cpp" line="3" column="0"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;playerFields&apos; should be passed by const reference." verbose="Parameter &apos;playerFields&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398" file0="Sources/player.cpp">
+            <location file="Sources/player.cpp" line="39" column="50"/>
+            <symbol>playerFields</symbol>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;currentFigurine&apos; can be declared as pointer to const" verbose="Variable &apos;currentFigurine&apos; can be declared as pointer to const" cwe="398" file0="Sources/player.cpp">
+            <location file="Sources/player.cpp" line="48" column="17" info="Variable &apos;currentFigurine&apos; can be declared as pointer to const"/>
+            <symbol>currentFigurine</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablefigurinescene.cpp" line="9" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsScene&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsSceneMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QGraphicsView&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QMouseEvent&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;QPoint&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="8" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="Sources/tablesetupscene.cpp" line="9" column="0"/>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setBoard&apos; is never used." verbose="The function &apos;setBoard&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="7" column="0"/>
+            <symbol>setBoard</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPboard&apos; is never used." verbose="The function &apos;setPboard&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="11" column="0"/>
+            <symbol>setPboard</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setField&apos; is never used." verbose="The function &apos;setField&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="53" column="0"/>
+            <symbol>setField</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;checkPlayerSetup&apos; is never used." verbose="The function &apos;checkPlayerSetup&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="65" column="0"/>
+            <symbol>checkPlayerSetup</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getFirstRowFree&apos; is never used." verbose="The function &apos;getFirstRowFree&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="110" column="0"/>
+            <symbol>getFirstRowFree</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getAllFigurinesSet&apos; is never used." verbose="The function &apos;getAllFigurinesSet&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="112" column="0"/>
+            <symbol>getAllFigurinesSet</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getBombsNotBlockingWay&apos; is never used." verbose="The function &apos;getBombsNotBlockingWay&apos; is never used." cwe="561">
+            <location file="Sources/board.cpp" line="114" column="0"/>
+            <symbol>getBombsNotBlockingWay</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;paint&apos; is never used." verbose="The function &apos;paint&apos; is never used." cwe="561">
+            <location file="Sources/field.cpp" line="85" column="0"/>
+            <symbol>paint</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setFig&apos; is never used." verbose="The function &apos;setFig&apos; is never used." cwe="561">
+            <location file="Sources/field.cpp" line="231" column="0"/>
+            <symbol>setFig</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;whereCanMove&apos; is never used." verbose="The function &apos;whereCanMove&apos; is never used." cwe="561">
+            <location file="Sources/figurine.cpp" line="322" column="0"/>
+            <symbol>whereCanMove</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getCrossed&apos; is never used." verbose="The function &apos;getCrossed&apos; is never used." cwe="561">
+            <location file="Sources/figurine.cpp" line="590" column="0"/>
+            <symbol>getCrossed</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;playGame&apos; is never used." verbose="The function &apos;playGame&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="59" column="0"/>
+            <symbol>playGame</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;drawTable&apos; is never used." verbose="The function &apos;drawTable&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="908" column="0"/>
+            <symbol>drawTable</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPlayer2&apos; is never used." verbose="The function &apos;setPlayer2&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="939" column="0"/>
+            <symbol>setPlayer2</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPlayer1&apos; is never used." verbose="The function &apos;setPlayer1&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="943" column="0"/>
+            <symbol>setPlayer1</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getGameScene&apos; is never used." verbose="The function &apos;getGameScene&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="959" column="0"/>
+            <symbol>getGameScene</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setGameScene&apos; is never used." verbose="The function &apos;setGameScene&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="961" column="0"/>
+            <symbol>setGameScene</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setDifficulty&apos; is never used." verbose="The function &apos;setDifficulty&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="969" column="0"/>
+            <symbol>setDifficulty</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getNotification&apos; is never used." verbose="The function &apos;getNotification&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="971" column="0"/>
+            <symbol>getNotification</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setNotification&apos; is never used." verbose="The function &apos;setNotification&apos; is never used." cwe="561">
+            <location file="Sources/game.cpp" line="973" column="0"/>
+            <symbol>setNotification</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getPlayerTable&apos; is never used." verbose="The function &apos;getPlayerTable&apos; is never used." cwe="561">
+            <location file="Sources/player.cpp" line="7" column="0"/>
+            <symbol>getPlayerTable</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getPlayerField&apos; is never used." verbose="The function &apos;getPlayerField&apos; is never used." cwe="561">
+            <location file="Sources/player.cpp" line="9" column="0"/>
+            <symbol>getPlayerField</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPlayerTable&apos; is never used." verbose="The function &apos;setPlayerTable&apos; is never used." cwe="561">
+            <location file="Sources/player.cpp" line="14" column="0"/>
+            <symbol>setPlayerTable</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPlayerType&apos; is never used." verbose="The function &apos;setPlayerType&apos; is never used." cwe="561">
+            <location file="Sources/player.cpp" line="18" column="0"/>
+            <symbol>setPlayerType</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getCurrentSelectedFigurine&apos; is never used." verbose="The function &apos;getCurrentSelectedFigurine&apos; is never used." cwe="561">
+            <location file="Sources/player.cpp" line="29" column="0"/>
+            <symbol>getCurrentSelectedFigurine</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setCurrentSelectedFigurine&apos; is never used." verbose="The function &apos;setCurrentSelectedFigurine&apos; is never used." cwe="561">
+            <location file="Sources/player.cpp" line="34" column="0"/>
+            <symbol>setCurrentSelectedFigurine</symbol>
+        </error>
+    </errors>
+</results>
