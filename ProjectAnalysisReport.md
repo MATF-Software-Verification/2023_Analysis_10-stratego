@@ -170,3 +170,59 @@ Nakon završetka rada skripte, automatski se otvara generisani HTML fajl (report
 
 
 ![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/cppcheck/cppcheck3.png)
+
+## 6. Flawfinder
+Flawfinder je alat za statičku analizu koda, dizajniran da prepoznaje potencijalne sigurnosne ranjivosti u C i C++ kodovima.
+Ima ključnu ulogu u procesu razvoja softvera koji mora biti siguran i otporan na napade. Njegova primarna uloga je da:
+
+    Detektuje Sigurnosne Ranjivosti: Pretražuje izvorni kod za poznate sigurnosne probleme i upozorava programere na njih.
+
+    Pruža Savete za Ispravke: Pored identifikacije problema, Flawfinder često pruža sugestije o tome kako da se problem reši.
+
+    Podstiče Najbolje Prakse: Korišćenjem Flawfindera, programeri se podstiču da pišu sigurniji kod i usvajaju najbolje prakse za bezbednost softvera.
+
+Pomaže programerima da otkriju i isprave probleme u ranim fazama razvoja, pre nego što kod postane deo proizvodnog okruženja.
+
+
+Pre upotrebe ovog alata potrebno je instalirati ga komandom: `sudo apt install flawfinder`
+
+Najjednostavnija upotreba: `flawfinder Sources/` 
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/flawfinder/flaw1.png)
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/flawfinder/flaw2.png)
+
+Na osnovu izveštaja koji je generisao, Flawfinder je identifikovao tri instance upotrebe funkcije srand, koja se koristi za inicijalizaciju generatora slučajnih brojeva, ali nije pogodna za bezbednosne svrhe kao što je kreacija kriptografskih ključeva zbog svojih ograničenih slučajnih karakteristika. Svi identifikovani problemi su klasifikovani kao nivo 3, što ukazuje na ozbiljnu, ali ne kritičnu ranjivost u bezbednosti. Za poboljšanje bezbednosti, preporučuje se zamena srand sa bezbednijim metodama generisanja slučajnih brojeva, kao što su kriptografski bezbedne funkcije poput std::random_device u C++. 
+
+
+Neke od opcija koje pomažu u prilagođavanju analize specifičnim potrebama i u optimizaciji procesa identifikacije sigurnosnih problema u kodu su:
+
+    --minlevel=LEVEL
+    Ova opcija omogućava filtriranje rezultata prema minimalnom nivou ozbiljnosti problema. Na primer, --minlevel=2 prikazuje samo rezultate sa nivoima ozbiljnosti 2 i višim, što može pomoći u fokusu na značajnije probleme.
+
+    --xml / --html
+    Generiše izveštaj u XML/HTML formatu.
+    
+    --ignore
+    Ignoriše specifične linije ili fajlove dodavanjem komentara u kod koji označavaju da se određeni problemi ne prijavljuju.
+
+    --recursive
+    Omogućava analizu svih poddirektorijuma, što je korisno za projekte sa kompleksnom strukturom direktorijuma.
+
+    --followdotdir
+    Omogućava analizu direktorijuma koji počinju sa tačkom (.), koji su inače ignorisani.
+   
+[run-flawfinder.sh](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/flawfinder/run-flawfinder.sh)
+Ova skripta pokreće Flawfinder alat za analizu koda u trenutnom direktorijumu i generiše izveštaj u HTML formatu sa nazivom flawfinder_report.html. Nakon što je analiza završena, izveštaj se automatski otvara u Firefox pretraživaču.
+
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/flawfinder/flaw3.png)
+
+![](https://github.com/MATF-Software-Verification/2023_Analysis_10-stratego/blob/main/flawfinder/flaw4.png)
+
+
+Izveštaj sa Flawfinder analize ukazuje na nekoliko bezbednosnih problema u kodu. Konkretno, identifikovane su tri instance upotrebe funkcije srand, koja nije dovoljno sigurna za funkcije vezane za sigurnost, poput kreacije ključeva i nonce-a, što može dovesti do predvidljivih i potencijalno ranjivih nasumičnih brojeva (CWE-327). Ovo je ozbiljno jer može uticati na sigurnost aplikacije. Takođe, analizom su identifikovani i problemi vezani za korišćenje statički definisanih nizova karaktera u nekoliko generisanih moc_ fajlova, što može dovesti do problema sa prelivanjem bafera zbog nedostatka odgovarajuće provere granica (CWE-119 i CWE-120). Izveštaj takođe pokazuje da je analizirano 1,325,484 linija koda za otprilike 86 sekundi, s tim da su uočeni problemi na 8 mesta, sa minimalnim nivoom rizika 1. Ove informacije ukazuju na to da je potrebno preduzeti korake kako bi se poboljšala sigurnost koda, posebno obazirući se na upotrebu funkcija za generisanje nasumičnih brojeva i pravilnu implementaciju provere granica za statičke nizove. Preporučuje se dodatna proaktivna provala i revizija koda, uz upotrebu alata za otkrivanje potencijalnih ranjivosti, kako bi se unapredila sigurnost aplikacije.
+
+    
+
+
+
