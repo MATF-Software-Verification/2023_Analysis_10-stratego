@@ -16,9 +16,17 @@
   - Memcheck
   - Callgrind
   
+Za svaki od pomenutih alata postoji odgovarajući direktorijum. Detaljne informacije o rezultatima i načinu pokretanja ovih alata možete pronaći u ProjectAnalysisReport.md izveštaju smeštenom u repozitorijumu.
+  
 
 # :memo: Zaključak:
-
+Na osnovu analize projekta Stratego korišćenjem različitih alata, preporučuje se:
+- Fokusirati se na destruktore u QtWaylandClient biblioteci: Proveriti kako se resursi oslobađaju prilikom destrukcije objekata.
+- Proveriti inicijalizaciju i oslobađanje objekata: Osigurati da su objekti pravilno inicijalizovani i da se oslobađaju u ispravnom redosledu.
+- Obratiti pažnju na upotrebu mutexa: Osigurati da se svaki lock na mutexu pravilno odblokira i da se ne koristi nakon oslobađanja.
+- Zameniti funkciju srand: Funkcija srand nije pogodna za bezbednosne svrhe i treba je zameniti.
+- Koristiti kriptografski bezbedne metode generisanja slučajnih brojeva: Preporučuje se upotreba funkcija poput std::random_device u C++ za poboljšanje bezbednosti.
+- Razmotriti nivo 3 ranjivosti: Identifikovani problemi su ozbiljni, ali ne kritični, i trebaju biti tretirani sa pažnjom.
 
 # Autor:
 Katarina Milošević, 1019/2023
